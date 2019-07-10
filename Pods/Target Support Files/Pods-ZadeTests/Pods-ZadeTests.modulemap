@@ -1,0 +1,6 @@
+framework module Pods_ZadeTests {
+  umbrella header "Pods-ZadeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

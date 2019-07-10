@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>77281921738-egpvcjb9d1o6niv47b76ln6qhkb67lqh.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.77281921738-egpvcjb9d1o6niv47b76ln6qhkb67lqh</string>
+	<key>API_KEY</key>
+	<string>AIzaSyADUouv8rFaN5jzYiykqTS3_nocSjtMdMM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>77281921738</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>sa.Zade</string>
+	<key>PROJECT_ID</key>
+	<string>zade-7c3eb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>zade-7c3eb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:77281921738:ios:d3cca602b36b6916</string>
+	<key>DATABASE_URL</key>
+	<string>https://zade-7c3eb.firebaseio.com</string>
+</dict>
+</plist>
