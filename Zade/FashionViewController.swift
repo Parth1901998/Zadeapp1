@@ -17,11 +17,13 @@ class FashionViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     var titlearray = ["Top Trending shoes of all time", "Top Trending handbags of all time","Top Trending white frok of all time","Top Trending blackFrok of all time"]
     
-    var fashionblog: [UIImage] = [
-        UIImage(named: "ic_shoes.png")!,
-        UIImage(named: "ic_handbag.png")!,
-        UIImage(named: "girlwhite")!,
-        UIImage(named: "girlblack")!]
+    var logoImage: [UIImage] = [
+        UIImage(named: "fashion.png")!,
+        UIImage(named: "friends.png")!,
+        UIImage(named: "lifestyle.png")!,
+        UIImage(named: "travel.png")!
+        
+    ]
     
     var detailarray = ["vbvqerbveqvneneiqveqveq","fefbvqerbveqvneneiqveqveq","ffgwehnwwtbrw","rfrgevbvqerbveqvneneiqveqveq"]
     
@@ -37,19 +39,18 @@ class FashionViewController: UIViewController,UITableViewDelegate,UITableViewDat
         print(headingarray.count)
         return headingarray.count
         
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "fashioncell", for: indexPath) as! FashionTableViewCell
-        cell.fashionImageBlog.image = fashionblog[indexPath.row]
+        cell.fashionImageBlog.image = logoImage[indexPath.row]
         cell.headingBlog.text = headingarray[indexPath.row]
         cell.titleBlog.text = titlearray[indexPath.row]
         cell.descriptionBlog.text = detailarray[indexPath.row]
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        return 500
     }
 }
 

@@ -30,25 +30,24 @@ class ProductHomeViewController: UIViewController {
         if sender.selectedSegmentIndex == 0{
             fashionview.alpha = 1
             lifestyleview.alpha = 0
-            travelview.alpha = 1
+            travelview.alpha = 0
         }
        
-        else{
+        
+        else if sender.selectedSegmentIndex == 1{
             fashionview.alpha = 0
             lifestyleview.alpha = 1
             travelview.alpha = 0
             
         }
+        else if sender.selectedSegmentIndex == 2
+        {
+            fashionview.alpha = 0
+            lifestyleview.alpha = 0
+            travelview.alpha = 1
+        }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+
