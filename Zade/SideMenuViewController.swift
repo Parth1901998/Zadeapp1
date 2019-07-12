@@ -75,6 +75,15 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
 
     @IBOutlet weak var tableView: UITableView!
     
+    
+    @IBAction func bestSellerCollection(_ sender: UIButton) {
+        
+        let BestSeller = storyboard?.instantiateViewController(withIdentifier: "product") as! Products_View_Controller
+        self.navigationController?.pushViewController(BestSeller, animated: true)
+        
+    
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

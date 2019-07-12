@@ -41,7 +41,8 @@
 		DEFB8C6122D74EAC00CEFD1F /* Products View Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB8C6022D74EAC00CEFD1F /* Products View Controller.swift */; };
 		DEFB8C6322D750AA00CEFD1F /* NewArrivals.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB8C6222D750AA00CEFD1F /* NewArrivals.swift */; };
 		DEFB8C6522D753D700CEFD1F /* newArrivalViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB8C6422D753D700CEFD1F /* newArrivalViewCell.swift */; };
-		DEFB8C6B22D7740600CEFD1F /* MusicPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB8C6A22D7740500CEFD1F /* MusicPlayerCell.swift */; };
+		DEFD8A8B22D849DD0009071A /* LifeStyleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD8A8A22D849DD0009071A /* LifeStyleModel.swift */; };
+		DEFD8A9122D8C8F60009071A /* UserupdatesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD8A9022D8C8F60009071A /* UserupdatesCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,7 +107,8 @@
 		DEFB8C6022D74EAC00CEFD1F /* Products View Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Products View Controller.swift"; sourceTree = "<group>"; };
 		DEFB8C6222D750AA00CEFD1F /* NewArrivals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewArrivals.swift; sourceTree = "<group>"; };
 		DEFB8C6422D753D700CEFD1F /* newArrivalViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newArrivalViewCell.swift; sourceTree = "<group>"; };
-		DEFB8C6A22D7740500CEFD1F /* MusicPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerCell.swift; sourceTree = "<group>"; };
+		DEFD8A8A22D849DD0009071A /* LifeStyleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeStyleModel.swift; sourceTree = "<group>"; };
+		DEFD8A9022D8C8F60009071A /* UserupdatesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserupdatesCollectionViewCell.swift; sourceTree = "<group>"; };
 		ECED8307E533E1521A8D5064 /* Pods-ZadeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZadeUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZadeUITests/Pods-ZadeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FFAE922AC3728805E3FDF4E2 /* Pods-ZadeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZadeUITests.release.xcconfig"; path = "Target Support Files/Pods-ZadeUITests/Pods-ZadeUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,6 +189,7 @@
 		DEA4CC5822D34CD40044A7DD /* Zade */ = {
 			isa = PBXGroup;
 			children = (
+				DEFD8A8922D849A10009071A /* Model */,
 				DEFB8C5022D71BA500CEFD1F /* ExpandableHeaderView */,
 				DEA4CC8B22D34D950044A7DD /* fonts */,
 				DEA4CC5922D34CD40044A7DD /* AppDelegate.swift */,
@@ -194,7 +197,7 @@
 				DEA4CC8722D34D300044A7DD /* Slide.xib */,
 				DEA4CC8922D34D590044A7DD /* Slide.swift */,
 				DEA4CC5D22D34CD40044A7DD /* Main.storyboard */,
-				DEFB8C6A22D7740500CEFD1F /* MusicPlayerCell.swift */,
+				DEFD8A9022D8C8F60009071A /* UserupdatesCollectionViewCell.swift */,
 				DEFB8C6422D753D700CEFD1F /* newArrivalViewCell.swift */,
 				DEFB8C6222D750AA00CEFD1F /* NewArrivals.swift */,
 				DEFB8C6022D74EAC00CEFD1F /* Products View Controller.swift */,
@@ -254,6 +257,14 @@
 				DEFB8C5D22D732D300CEFD1F /* contentViewController.xib */,
 			);
 			path = ContentVc;
+			sourceTree = "<group>";
+		};
+		DEFD8A8922D849A10009071A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DEFD8A8A22D849DD0009071A /* LifeStyleModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -499,13 +510,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEFD8A8B22D849DD0009071A /* LifeStyleModel.swift in Sources */,
 				DEFB8C5422D71D8A00CEFD1F /* ExpandableHeaderView.swift in Sources */,
+				DEFD8A9122D8C8F60009071A /* UserupdatesCollectionViewCell.swift in Sources */,
 				DEFB8C4322D6E9BA00CEFD1F /* LifeStyleViewController.swift in Sources */,
 				DEF8B95422D44FFF00D40722 /* BasicCell.swift in Sources */,
 				DEFB8C5622D7216900CEFD1F /* SideMenuViewController.swift in Sources */,
 				DEFB8C5E22D732D300CEFD1F /* contentViewController.swift in Sources */,
 				DEFB8C6522D753D700CEFD1F /* newArrivalViewCell.swift in Sources */,
-				DEFB8C6B22D7740600CEFD1F /* MusicPlayerCell.swift in Sources */,
 				DEA4CC8E22D351960044A7DD /* LoginViewController.swift in Sources */,
 				DEF8B94E22D44C6200D40722 /* MenuTabsView.swift in Sources */,
 				DEFB8C5222D71C0C00CEFD1F /* Section.swift in Sources */,

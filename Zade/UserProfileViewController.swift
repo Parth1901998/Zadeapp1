@@ -10,11 +10,24 @@ import UIKit
 import  Firebase
 import FirebaseAuth
 
-class UserProfileViewController: UIViewController {
+class UserProfileViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
+    }
+    
+    
+
 
     @IBOutlet weak var userproname: UILabel!
     
     @IBOutlet weak var userimage: UIImageView!
+    
+    @IBOutlet weak var userUploadedPhotos: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

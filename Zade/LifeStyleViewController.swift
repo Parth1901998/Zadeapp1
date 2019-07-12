@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseCore
 
 class LifeStyleViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
+    let db = Firestore.firestore()
     
+      var blogModel : [LifeStyleModel] = []
     
     @IBOutlet weak var lifestyleTableView: UITableView!
     
@@ -18,35 +23,100 @@ class LifeStyleViewController: UIViewController,UITableViewDataSource,UITableVie
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return headinglife.count
+        return blogModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LifeStyle", for: indexPath) as! LifeStyleTableViewCell
-        cell.lifeStylelogimage.image = self.imagesslife[indexPath.row]
-          cell.lifestyleHeading.text = self.headinglife[indexPath.row]
-          cell.lifestyleTitle.text = self.titlelife[indexPath.row]
-          cell.lifestyleDesc.text = self.descriptionlife[indexPath.row]
+        
+//        let schedule = postarray[indexPath.row]
+        let lifeModel = blogModel[indexPath.row]
+        
+        cell.lifeStylelogimage.image = lifeModel.blogimage
+          cell.lifestyleHeading.text = lifeModel.blogHeadings
+          cell.lifestyleTitle.text = lifeModel.blogtitle
+          cell.lifestyleDesc.text = lifeModel.blogDescription
         return cell
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        return 500
     }
     
     
-    let headinglife = [("friends"),("travel"),("lifestyle"),("fashion"),("lifestyleblog")]
-    let imagesslife = [UIImage(named: "friends"), UIImage(named: "travel"), UIImage(named: "lifestyle"), UIImage(named: "fashion"), UIImage(named: "lifestyleblog")]
-     let titlelife = [("friends"),("travel"),("lifestyle"),("fashion"),("lifestyleblog")]
-    let descriptionlife = [("Travel With your friedns and enjoy your journey"),("travelling gives you the exicitment"),("live your life and enjoy"),("fashion is the key point of human life"),("post your daily life style in a blog")]
-
+    var logoImage: [UIImage] = [
+        UIImage(named: "fashion.png")!,
+        UIImage(named: "friends.png")!,
+        UIImage(named: "lifestyle.png")!,
+        UIImage(named: "travel.png")!
+        
+    ]
+    
+//    var postarray = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         lifestyleTableView.delegate = self
         lifestyleTableView.dataSource = self
+        
+//        self.readData()
+//        lifestyleTableView.reloadData()
 
         // Do any additional setup after loading the view.
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.blogModel = []
+        self.readData()
+        lifestyleTableView.reloadData()
+        
+    }
+    
+   
+    func readData() {
+    
+        self.logoImage.removeAll()
+        
+        db.collection("LIfeStyleBlogs").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+                
+            } else {
+                for document in querySnapshot!.documents {
+                    // most Important
+                    let nownewitem = LifeStyleModel()
+                    nownewitem.blogHeadings = (document.data()["Heading"] as! String)
+                    nownewitem.blogtitle = (document.data()["Title"] as! String)
+                    // feching data
+                    let storeRef = Storage.storage().reference(withPath: "lifestyleImages/\(nownewitem.blogHeadings).jpg")//document.documentID
+                    
+//                    print("nowlist/\(nownewitem.name!).png")
+                    
+                    storeRef.getData(maxSize: 4 * 1024 *  1024, completion: {(data, error) in
+                        if let error = error {
+                            print("error-------- \(error.localizedDescription)")
+                            
+                            return
+                        }
+                        if let data = data {
+                            print("Main data\(data)")
+                            nownewitem.blogimage  = UIImage(data: data)!
+                            self.lifestyleTableView.reloadData()
+                        }
+                    })
+                    //self.nows.append(nownewitem.image!)
+                    self.blogModel.append(nownewitem)
+                    DispatchQueue.main.async {
+                        self.lifestyleTableView.reloadData()
+                        
+                    }
+                    self.lifestyleTableView.reloadData()
+                    print("Data Print:- \(document.documentID) => \(document.data())")
+                    
+                }
+            }
+        }
+    
+}
 }

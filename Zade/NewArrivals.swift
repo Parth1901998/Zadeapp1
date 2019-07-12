@@ -15,7 +15,7 @@ class NewArrivals: UIViewController,UICollectionViewDelegate,UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newarrival", for: indexPath) as! newArrivalViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newArrivalViewCell", for: indexPath) as! newArrivalViewCell
         cell.newarrivalName.text = array[indexPath.row]
         cell.newarrivalImage.image=logoImage[indexPath.row]
         cell.newarrivalPrice.text=arrayPrice[indexPath.row]
@@ -31,7 +31,7 @@ class NewArrivals: UIViewController,UICollectionViewDelegate,UICollectionViewDat
     
     var logoImage: [UIImage] = [
         UIImage(named: "ic_shoes.png")!,
-        UIImage(named: "ic_handbag.png")!,
+        UIImage(named: "ic_hangbag.png")!,
         UIImage(named: "ic_white.png")!,
         UIImage(named: "ic_black.png")!]
     
