@@ -1,28 +1,23 @@
 //
-//  FashionTableViewCell.swift
+//  UserpostsTableViewCell.swift
 //  Zade
 //
-//  Created by Parth Bhojak on 10/07/19.
+//  Created by Parth Bhojak on 15/07/19.
 //  Copyright © 2019 Parth Bhojak. All rights reserved.
 //
 
 import UIKit
 
-class FashionTableViewCell: UITableViewCell {
+class UserpostsTableViewCell: UITableViewCell {
     
     
-    @IBOutlet weak var fashionImageBlog: UIImageView!
+    @IBOutlet weak var uploadedImage: UIImageView!
     
     
-    @IBOutlet weak var headingBlog: UILabel!
+    @IBOutlet weak var uplodedPostdata: UILabel!
     
     
-    @IBOutlet weak var titleBlog: UILabel!
-    
-    
-    @IBOutlet weak var descriptionBlog: UILabel!
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

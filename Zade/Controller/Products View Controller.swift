@@ -23,6 +23,7 @@ class Products_View_Controller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
     }
     
     @IBAction func segmentSwitch(_ sender: UISegmentedControl) {

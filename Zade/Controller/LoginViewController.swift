@@ -24,12 +24,18 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegat
     @IBAction func signWithGoogle(_ sender: UIButton) {
         
          GIDSignIn.sharedInstance().signIn()
+
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//        let UserProfileViewController = storyBoard.instantiateViewController(withIdentifier: "Profile") as! UserProfileViewController
+//        self.present(UserProfileViewController, animated:true, completion:nil)
+
+        
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let ProductHomeViewController = storyBoard.instantiateViewController(withIdentifier: "ProductHomeViewController") as! ProductHomeViewController
-        self.present(ProductHomeViewController, animated:true, completion:nil)
+        let UserPostViewController = storyBoard.instantiateViewController(withIdentifier: "tabbar") as! UITabBarController
+        self.present(UserPostViewController, animated:true, completion:nil)
         
     }
-    
+
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         print("Google Sing In didSignInForUser")
         if let error = error {
@@ -59,6 +65,16 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegat
         // Close OAuth2 authentication window
         dismiss(animated: true) {() -> Void in }
     }
-
+    
+    
+    @IBAction func backToHome(_ sender: UIButton) {
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+              let IntroductionSlide = storyBoard.instantiateViewController(withIdentifier: "Introduction") as! IntroductionSlide
+               self.present(IntroductionSlide, animated:true, completion:nil)
+        
+        
+    }
+    
 
 }

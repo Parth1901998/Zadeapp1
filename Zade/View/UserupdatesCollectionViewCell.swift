@@ -14,4 +14,6 @@ class UserupdatesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var uploadedImage: UIImageView!
     
     
+    @IBOutlet weak var usersTextpost: UILabel!
+    
 }

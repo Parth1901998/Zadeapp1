@@ -13,23 +13,22 @@ import Firebase
 class TravelViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
+//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        return 1
+//    }
+//
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return travelBlog.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Travel", for: indexPath) as! TravelTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TravelTableViewCell", for: indexPath) as! TravelTableViewCell
         
-        cell.travellogimage.image = self.imagesslife[indexPath.row]
-        cell.travelHeading.text = self.headinglife[indexPath.row]
-        cell.travelTitle.text = self.titlelife[indexPath.row]
-        cell.travelDesc.text = self.descriptionlife[indexPath.row]
-     
-
+        cell.travelImage.image = travelBlog[indexPath.row].travelimage
+        cell.travelHeading.text = travelBlog[indexPath.row].travelHEading
+//        cell.travelTitle.text = travelBlog[indexPath.row].travelTitle
+        cell.travelDesc.text = travelBlog[indexPath.row].travelDescrip
+    
         return cell
     }
     
@@ -43,25 +42,21 @@ class TravelViewController: UIViewController,UITableViewDelegate,UITableViewData
       let db = Firestore.firestore()
        var travelBlog : [TravelModel] = []
     
-    let headinglife = [("friends"),("travel"),("lifestyle"),("fashion"),("lifestyleblog")]
-    var imagesslife = [UIImage(named: "friends"), UIImage(named: "travel"), UIImage(named: "lifestyle"), UIImage(named: "fashion"), UIImage(named: "lifestyleblog")]
-    let titlelife = [("friends"),("travel"),("lifestyle"),("fashion"),("lifestyleblog")]
-    let descriptionlife = [("Travel With your friedns and enjoy your journey"),("travelling gives you the exicitment"),("live your life and enjoy"),("fashion is the key point of human life"),("post your daily life style in a blog")]
+    let headinglife = [("TravelGoa"),("TravelBali"),("TravelSingapore")]
+    var imagesslife = [UIImage(named: "TravelGoa"), UIImage(named: "TravelBali"), UIImage(named: "TravelSingapore")]
+    let titlelife = [("friends"),("travel"),("lifestyle")]
+    let descriptionlife = [("Travel With your friedns and enjoy your journey"),("travelling gives you the exicitment"),("live your life and enjoy")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.readData()
+          self.travelBlog = []
+        travelTableView.reloadData()
         travelTableView.dataSource = self
         travelTableView.delegate = self
 
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        self.travelBlog = []
-        self.readData()
-        travelTableView.reloadData()
-    }
-    
+ 
      func readData()
       {
         self.imagesslife.removeAll()
@@ -75,7 +70,11 @@ class TravelViewController: UIViewController,UITableViewDelegate,UITableViewData
             // most Important
             let nownewitem = TravelModel()
             nownewitem.travelHEading = (document.data()["Heading"] as! String)
-            nownewitem.travelTitle = (document.data()["Title"] as! String)
+                print(nownewitem.travelHEading)
+//            nownewitem.travelTitle = (document.data()["Title"] as! String)
+//                print(nownewitem.travelTitle)
+            nownewitem.travelDescrip = (document.data()["Description"] as! String)
+                print(nownewitem.travelDescrip)
             // feching data
             let storeRef = Storage.storage().reference(withPath: "travelImages/\(nownewitem.travelHEading).jpg")//document.documentID
         
@@ -83,10 +82,11 @@ class TravelViewController: UIViewController,UITableViewDelegate,UITableViewData
             if let error = error {
             print("error-------- \(error.localizedDescription)")
             return
-    }
+                }
             if let data = data {
             print("Main data\(data)")
             nownewitem.travelimage  = UIImage(data: data)!
+                
             self.travelTableView.reloadData()
             }
     })

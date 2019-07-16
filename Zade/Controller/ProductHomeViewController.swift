@@ -13,7 +13,6 @@ class ProductHomeViewController: UIViewController {
     
     @IBOutlet weak var fashionview: UIView!
     
-
     @IBOutlet weak var lifestyleview: UIView!
     
     @IBOutlet weak var travelview: UIView!

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseCore
 
 class SideMenuViewController:
 UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewDelegate {
@@ -67,13 +69,17 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
         return header
     }
     
-  
-   
     var sections = [Section(men: "For Men", collected: ["T-Shirt","Shoes","jacket","Asesories"], expanded: false),
                     Section(men: "For women", collected: ["T-Shirt","Shoes","jacket","Asesories"], expanded: false)]
     
 
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    @IBOutlet weak var userImageHere: UIImageView!
+    
+    
+    @IBOutlet weak var userNameHere: UILabel!
     
     
     @IBAction func bestSellerCollection(_ sender: UIButton) {
@@ -84,12 +90,53 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
     
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+    @IBOutlet weak var searchBar: UISearchBar!
     
 
+    
+    @IBAction func greenBackButton(_ sender: UIButton) {
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let ProductHomeViewController = storyBoard.instantiateViewController(withIdentifier: "ProductHomeViewController") as! ProductHomeViewController
+        self.present(ProductHomeViewController, animated:true, completion:nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+   UINavigationBar.appearance().tintColor = .white
+        self.searchBar.layer.cornerRadius = 20 
+        self.searchBar.clipsToBounds = true
+        searchBar.layer.borderWidth = 1
 
+        let user = Auth.auth().currentUser
+        userNameHere.text = user?.displayName
+        let url = user?.photoURL
+        
+        
+        let data = try? Data(contentsOf: url!)
+        
+        if let imageData = data {
+            let image = UIImage(data: imageData)
+            userImageHere.image = image
+            userImageHere.layer.borderWidth = 1
+            userImageHere.layer.masksToBounds = false
+            userImageHere.layer.borderColor = UIColor.black.cgColor
+            userImageHere.layer.cornerRadius = userImageHere.frame.height/2
+            userImageHere.clipsToBounds = true
+
+        // Do any additional setup after loading the view.
+    
+        }
+    
+    }
+    
+    @IBAction func GOToProfile(_ sender: UIButton) {
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let UserProfileViewController = storyBoard.instantiateViewController(withIdentifier: "Profile") as! UserProfileViewController
+        self.present(UserProfileViewController, animated:true, completion:nil)
+        
+    }
+    
 }

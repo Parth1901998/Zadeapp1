@@ -1,25 +1,24 @@
 //
-//  TravelTableViewCell.swift
+//  FashionTableViewCell.swift
 //  Zade
 //
-//  Created by Parth Bhojak on 11/07/19.
+//  Created by Parth Bhojak on 10/07/19.
 //  Copyright © 2019 Parth Bhojak. All rights reserved.
 //
 
 import UIKit
 
-class TravelTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var travellogimage: UIImageView!
-    
-
-    
-    @IBOutlet weak var travelHeading: UILabel!
+class FashionTableViewCell: UITableViewCell {
     
     
-    @IBOutlet weak var travelTitle: UILabel!
+    @IBOutlet weak var fashionImageBlog: UIImageView!
     
-    @IBOutlet weak var travelDesc: UILabel!
+    
+    @IBOutlet weak var headingBlog: UILabel!
+    
+    
+    @IBOutlet weak var descriptionBlog: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -24,6 +24,16 @@
 		DEA4CC8C22D34D950044A7DD /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = DEA4CC8B22D34D950044A7DD /* fonts */; };
 		DEA4CC8E22D351960044A7DD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA4CC8D22D351960044A7DD /* LoginViewController.swift */; };
 		DEA4CC9022D3782B0044A7DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEA4CC8F22D3782B0044A7DD /* GoogleService-Info.plist */; };
+		DEAD29DB22DC42EA0036D28B /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD29DA22DC42EA0036D28B /* CollectionViewController.swift */; };
+		DEAD29DD22DC43740036D28B /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD29DC22DC43740036D28B /* CollectionViewCell.swift */; };
+		DEAD29DF22DC45090036D28B /* CollectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD29DE22DC45090036D28B /* CollectData.swift */; };
+		DEAD29E122DC54BD0036D28B /* BestSellersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD29E022DC54BD0036D28B /* BestSellersViewController.swift */; };
+		DEAD29E322DC55420036D28B /* BestSellerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD29E222DC55420036D28B /* BestSellerCollectionViewCell.swift */; };
+		DEAD29E522DC730A0036D28B /* UserPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD29E422DC730A0036D28B /* UserPostViewController.swift */; };
+		DEAD29E722DC74270036D28B /* UserpostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD29E622DC74270036D28B /* UserpostsTableViewCell.swift */; };
+		DEAD29E922DC75120036D28B /* UploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD29E822DC75120036D28B /* UploadTask.swift */; };
+		DEAD29EB22DC795E0036D28B /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD29EA22DC795E0036D28B /* UpdateViewController.swift */; };
+		DEAD29ED22DCA75C0036D28B /* UserTotalPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD29EC22DCA75C0036D28B /* UserTotalPostModel.swift */; };
 		DEF8617222D6262300E2E074 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF8617122D6262300E2E074 /* UserProfileViewController.swift */; };
 		DEF8B94E22D44C6200D40722 /* MenuTabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF8B94D22D44C6200D40722 /* MenuTabsView.swift */; };
 		DEF8B95422D44FFF00D40722 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF8B95322D44FFF00D40722 /* BasicCell.swift */; };
@@ -90,6 +100,16 @@
 		DEA4CC8B22D34D950044A7DD /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		DEA4CC8D22D351960044A7DD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DEA4CC8F22D3782B0044A7DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DEAD29DA22DC42EA0036D28B /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		DEAD29DC22DC43740036D28B /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		DEAD29DE22DC45090036D28B /* CollectData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectData.swift; sourceTree = "<group>"; };
+		DEAD29E022DC54BD0036D28B /* BestSellersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSellersViewController.swift; sourceTree = "<group>"; };
+		DEAD29E222DC55420036D28B /* BestSellerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSellerCollectionViewCell.swift; sourceTree = "<group>"; };
+		DEAD29E422DC730A0036D28B /* UserPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostViewController.swift; sourceTree = "<group>"; };
+		DEAD29E622DC74270036D28B /* UserpostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserpostsTableViewCell.swift; sourceTree = "<group>"; };
+		DEAD29E822DC75120036D28B /* UploadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTask.swift; sourceTree = "<group>"; };
+		DEAD29EA22DC795E0036D28B /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
+		DEAD29EC22DCA75C0036D28B /* UserTotalPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTotalPostModel.swift; sourceTree = "<group>"; };
 		DEF8617122D6262300E2E074 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		DEF8B94D22D44C6200D40722 /* MenuTabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTabsView.swift; sourceTree = "<group>"; };
 		DEF8B95322D44FFF00D40722 /* BasicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
@@ -189,30 +209,13 @@
 		DEA4CC5822D34CD40044A7DD /* Zade */ = {
 			isa = PBXGroup;
 			children = (
+				DEAD29D922DC3C7D0036D28B /* Controller */,
+				DEAD29D822DC3C270036D28B /* View */,
 				DEFD8A8922D849A10009071A /* Model */,
 				DEFB8C5022D71BA500CEFD1F /* ExpandableHeaderView */,
 				DEA4CC8B22D34D950044A7DD /* fonts */,
 				DEA4CC5922D34CD40044A7DD /* AppDelegate.swift */,
-				DEA4CC5B22D34CD40044A7DD /* IntroductionSlide.swift */,
-				DEA4CC8722D34D300044A7DD /* Slide.xib */,
-				DEA4CC8922D34D590044A7DD /* Slide.swift */,
-				DEA4CC5D22D34CD40044A7DD /* Main.storyboard */,
-				DEFD8A9022D8C8F60009071A /* UserupdatesCollectionViewCell.swift */,
-				DEFB8C6422D753D700CEFD1F /* newArrivalViewCell.swift */,
-				DEFB8C6222D750AA00CEFD1F /* NewArrivals.swift */,
-				DEFB8C6022D74EAC00CEFD1F /* Products View Controller.swift */,
-				DEFB8C5522D7216900CEFD1F /* SideMenuViewController.swift */,
-				DEFB8C4822D6F69900CEFD1F /* TravelTableViewCell.swift */,
-				DEFB8C4622D6F66800CEFD1F /* TravelViewController.swift */,
-				DEFB8C4422D6EB4E00CEFD1F /* LifeStyleTableViewCell.swift */,
-				DEFB8C4222D6E9BA00CEFD1F /* LifeStyleViewController.swift */,
-				DEF8617122D6262300E2E074 /* UserProfileViewController.swift */,
-				DE0C124F22D5A79B00C1CE6B /* FashionTableViewCell.swift */,
-				DE0C124D22D5A3D900C1CE6B /* FashionViewController.swift */,
-				DEF8B95D22D49F0300D40722 /* ProductHomeViewController.swift */,
 				DEF8B94D22D44C6200D40722 /* MenuTabsView.swift */,
-				DEF8B95322D44FFF00D40722 /* BasicCell.swift */,
-				DEA4CC8D22D351960044A7DD /* LoginViewController.swift */,
 				DEA4CC6022D34CD50044A7DD /* Assets.xcassets */,
 				DEA4CC6222D34CD50044A7DD /* LaunchScreen.storyboard */,
 				DEA4CC6522D34CD50044A7DD /* Info.plist */,
@@ -240,6 +243,46 @@
 			path = ZadeUITests;
 			sourceTree = "<group>";
 		};
+		DEAD29D822DC3C270036D28B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DEA4CC8722D34D300044A7DD /* Slide.xib */,
+				DEA4CC5D22D34CD40044A7DD /* Main.storyboard */,
+				DEAD29E622DC74270036D28B /* UserpostsTableViewCell.swift */,
+				DEAD29E222DC55420036D28B /* BestSellerCollectionViewCell.swift */,
+				DEAD29DC22DC43740036D28B /* CollectionViewCell.swift */,
+				DEFB8C4822D6F69900CEFD1F /* TravelTableViewCell.swift */,
+				DEFB8C4422D6EB4E00CEFD1F /* LifeStyleTableViewCell.swift */,
+				DEFB8C6422D753D700CEFD1F /* newArrivalViewCell.swift */,
+				DEF8B95322D44FFF00D40722 /* BasicCell.swift */,
+				DEFD8A9022D8C8F60009071A /* UserupdatesCollectionViewCell.swift */,
+				DE0C124F22D5A79B00C1CE6B /* FashionTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DEAD29D922DC3C7D0036D28B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DEA4CC5B22D34CD40044A7DD /* IntroductionSlide.swift */,
+				DEA4CC8922D34D590044A7DD /* Slide.swift */,
+				DEFB8C6022D74EAC00CEFD1F /* Products View Controller.swift */,
+				DEFB8C4622D6F66800CEFD1F /* TravelViewController.swift */,
+				DEFB8C5522D7216900CEFD1F /* SideMenuViewController.swift */,
+				DEF8617122D6262300E2E074 /* UserProfileViewController.swift */,
+				DEFB8C4222D6E9BA00CEFD1F /* LifeStyleViewController.swift */,
+				DE0C124D22D5A3D900C1CE6B /* FashionViewController.swift */,
+				DEF8B95D22D49F0300D40722 /* ProductHomeViewController.swift */,
+				DEA4CC8D22D351960044A7DD /* LoginViewController.swift */,
+				DEFB8C6222D750AA00CEFD1F /* NewArrivals.swift */,
+				DEAD29DA22DC42EA0036D28B /* CollectionViewController.swift */,
+				DEAD29E422DC730A0036D28B /* UserPostViewController.swift */,
+				DEAD29EA22DC795E0036D28B /* UpdateViewController.swift */,
+				DEAD29E022DC54BD0036D28B /* BestSellersViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		DEFB8C5022D71BA500CEFD1F /* ExpandableHeaderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +306,9 @@
 			isa = PBXGroup;
 			children = (
 				DEFD8A8A22D849DD0009071A /* LifeStyleModel.swift */,
+				DEAD29DE22DC45090036D28B /* CollectData.swift */,
+				DEAD29E822DC75120036D28B /* UploadTask.swift */,
+				DEAD29EC22DCA75C0036D28B /* UserTotalPostModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -513,22 +559,32 @@
 				DEFD8A8B22D849DD0009071A /* LifeStyleModel.swift in Sources */,
 				DEFB8C5422D71D8A00CEFD1F /* ExpandableHeaderView.swift in Sources */,
 				DEFD8A9122D8C8F60009071A /* UserupdatesCollectionViewCell.swift in Sources */,
+				DEAD29ED22DCA75C0036D28B /* UserTotalPostModel.swift in Sources */,
+				DEAD29E922DC75120036D28B /* UploadTask.swift in Sources */,
 				DEFB8C4322D6E9BA00CEFD1F /* LifeStyleViewController.swift in Sources */,
 				DEF8B95422D44FFF00D40722 /* BasicCell.swift in Sources */,
+				DEAD29E122DC54BD0036D28B /* BestSellersViewController.swift in Sources */,
 				DEFB8C5622D7216900CEFD1F /* SideMenuViewController.swift in Sources */,
 				DEFB8C5E22D732D300CEFD1F /* contentViewController.swift in Sources */,
+				DEAD29E322DC55420036D28B /* BestSellerCollectionViewCell.swift in Sources */,
 				DEFB8C6522D753D700CEFD1F /* newArrivalViewCell.swift in Sources */,
+				DEAD29EB22DC795E0036D28B /* UpdateViewController.swift in Sources */,
+				DEAD29DD22DC43740036D28B /* CollectionViewCell.swift in Sources */,
+				DEAD29E722DC74270036D28B /* UserpostsTableViewCell.swift in Sources */,
 				DEA4CC8E22D351960044A7DD /* LoginViewController.swift in Sources */,
 				DEF8B94E22D44C6200D40722 /* MenuTabsView.swift in Sources */,
 				DEFB8C5222D71C0C00CEFD1F /* Section.swift in Sources */,
 				DEFB8C4522D6EB4E00CEFD1F /* LifeStyleTableViewCell.swift in Sources */,
 				DEA4CC8A22D34D590044A7DD /* Slide.swift in Sources */,
 				DEFB8C4722D6F66800CEFD1F /* TravelViewController.swift in Sources */,
+				DEAD29DF22DC45090036D28B /* CollectData.swift in Sources */,
 				DEF8B95A22D453DD00D40722 /* Extensions.swift in Sources */,
 				DEFB8C6122D74EAC00CEFD1F /* Products View Controller.swift in Sources */,
 				DE0C124E22D5A3D900C1CE6B /* FashionViewController.swift in Sources */,
 				DEA4CC5C22D34CD40044A7DD /* IntroductionSlide.swift in Sources */,
 				DEF8617222D6262300E2E074 /* UserProfileViewController.swift in Sources */,
+				DEAD29E522DC730A0036D28B /* UserPostViewController.swift in Sources */,
+				DEAD29DB22DC42EA0036D28B /* CollectionViewController.swift in Sources */,
 				DEFB8C4922D6F69900CEFD1F /* TravelTableViewCell.swift in Sources */,
 				DEFB8C6322D750AA00CEFD1F /* NewArrivals.swift in Sources */,
 				DE0C125022D5A79B00C1CE6B /* FashionTableViewCell.swift in Sources */,

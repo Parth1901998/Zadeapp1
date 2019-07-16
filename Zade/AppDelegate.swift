@@ -11,6 +11,7 @@ import Firebase
 import GoogleSignIn
 import FirebaseFirestore
 import FirebaseCore
+import FirebaseFirestore
 //import FBSDKCoreKit
 
 

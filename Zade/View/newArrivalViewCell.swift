@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import Firebase
 
 class newArrivalViewCell: UICollectionViewCell {
+    
+    
+    let db = Firestore.firestore()
     
     @IBOutlet weak var newarrivalImage: UIImageView!
     
@@ -17,5 +21,22 @@ class newArrivalViewCell: UICollectionViewCell {
     @IBOutlet weak var newarrivalPrice: UILabel!
     
     @IBOutlet weak var newarrivallike: UIButton!
+    
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        
+        
+        
+        if sender.currentImage == UIImage(named: "ic_heart"){
+            
+            sender.setImage(UIImage(named: "Like"), for: .normal)
+            
+        }else{
+            
+            sender.setImage(UIImage(named: "ic_heart"), for: .normal)
+        }
+        
+    }
+    
+
     
 }

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleAspectFit" id="iN0-l3-epB" customClass="Slide" customModule="Zade" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Walkthrough #1" translatesAutoresizingMaskIntoConstraints="NO" id="3qO-qJ-E7N">
+                    <rect key="frame" x="40" y="64" width="335" height="338"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="338" id="TJR-hr-VMy"/>
+                        <constraint firstAttribute="width" constant="335" id="t6K-k5-eVq"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jz1-8G-npC">
+                    <rect key="frame" x="40" y="450" width="277" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="a8d-aO-VIx"/>
+                        <constraint firstAttribute="width" constant="277" id="czY-Jb-lXb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68C-fJ-ykn">
+                    <rect key="frame" x="40" y="490" width="295" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="3I9-Av-yVW"/>
+                        <constraint firstAttribute="width" constant="295" id="XLu-Op-qo6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lines" translatesAutoresizingMaskIntoConstraints="NO" id="p7T-u1-IS0">
+                    <rect key="frame" x="40" y="594" width="335" height="1"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="3qO-qJ-E7N" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="44" id="L79-et-vUf"/>
+                <constraint firstItem="68C-fJ-ykn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="Q7f-Kx-xKJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="68C-fJ-ykn" secondAttribute="trailing" constant="40" id="Qtb-72-FoY"/>
+                <constraint firstItem="jz1-8G-npC" firstAttribute="top" secondItem="3qO-qJ-E7N" secondAttribute="bottom" constant="48" id="YwC-NA-ccY"/>
+                <constraint firstItem="68C-fJ-ykn" firstAttribute="top" secondItem="jz1-8G-npC" secondAttribute="bottom" constant="8" id="aIQ-Kx-iaE"/>
+                <constraint firstItem="jz1-8G-npC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="hwy-w5-gRm"/>
+                <constraint firstItem="3qO-qJ-E7N" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="qrF-Qx-wkI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jz1-8G-npC" secondAttribute="trailing" constant="58" id="yA7-RJ-L49"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="68C-fJ-ykn" id="CUK-vp-uo6"/>
+                <outlet property="detailLabel" destination="jz1-8G-npC" id="lF0-AQ-vGI"/>
+                <outlet property="slideImages" destination="3qO-qJ-E7N" id="cwO-7J-5Oy"/>
+            </connections>
+            <point key="canvasLocation" x="173.59999999999999" y="180.35982008995504"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Walkthrough #1" width="111.66666412353516" height="112.66666412353516"/>
+        <image name="lines" width="375" height="1"/>
+    </resources>
+</document>

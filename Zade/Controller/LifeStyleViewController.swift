@@ -32,10 +32,11 @@ class LifeStyleViewController: UIViewController,UITableViewDataSource,UITableVie
 //        let schedule = postarray[indexPath.row]
         let lifeModel = blogModel[indexPath.row]
         
-        cell.lifeStylelogimage.image = lifeModel.blogimage
-          cell.lifestyleHeading.text = lifeModel.blogHeadings
-          cell.lifestyleTitle.text = lifeModel.blogtitle
-          cell.lifestyleDesc.text = lifeModel.blogDescription
+        cell.lifeStylelogimage.image = blogModel[indexPath.row].blogimage
+        
+          cell.lifestyleHeading.text = blogModel[indexPath.row].blogHeadings
+//          cell.lifestyleTitle.text = blogModel[indexPath.row].blogtitle
+          cell.lifestyleDesc.text = blogModel[indexPath.row].blogDescription
         return cell
         
     }
@@ -56,29 +57,21 @@ class LifeStyleViewController: UIViewController,UITableViewDataSource,UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        lifestyleTableView.delegate = self
-        lifestyleTableView.dataSource = self
-        
-//        self.readData()
-//        lifestyleTableView.reloadData()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
         self.blogModel = []
         self.readData()
-        lifestyleTableView.reloadData()
-        
+          lifestyleTableView.reloadData()
+        lifestyleTableView.delegate = self
+        lifestyleTableView.dataSource = self
+
     }
+
     
    
     func readData() {
     
         self.logoImage.removeAll()
         
-        db.collection("LIfeStyleBlogs").getDocuments() { (querySnapshot, err) in
+        db.collection("LifeStyleBlogs").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
                 
@@ -87,7 +80,8 @@ class LifeStyleViewController: UIViewController,UITableViewDataSource,UITableVie
                     // most Important
                     let nownewitem = LifeStyleModel()
                     nownewitem.blogHeadings = (document.data()["Heading"] as! String)
-                    nownewitem.blogtitle = (document.data()["Title"] as! String)
+//                    nownewitem.blogtitle = (document.data()["Title"] as! String)
+                    nownewitem.blogDescription = (document.data()["Description"] as! String)
                     // feching data
                     let storeRef = Storage.storage().reference(withPath: "lifestyleImages/\(nownewitem.blogHeadings).jpg")//document.documentID
                     

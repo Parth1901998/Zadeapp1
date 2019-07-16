@@ -33,6 +33,9 @@ class IntroductionSlide: UIViewController,UIScrollViewDelegate{
         pageControl.numberOfPages = slides.count
         pageControl.currentPage = 0
         view.bringSubviewToFront(pageControl)
+        
+       self.scrollViewSlide.contentSize.height = 1.0
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -49,26 +52,34 @@ func createSlides() -> [Slide] {
     
     let slide1:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     slide1.slideImages.image = UIImage(named: "Walkthrough #1")
-    slide1.detailLabel.text = "Did you know that Winnie the chubby little cubby was based on a real, young bear in London"
+    slide1.detailLabel.text = "The Skinny on Lcd Monitors"
+    slide1.descriptionLabel.text = "Addication When Gambling Becomes a Problem "
     
     let slide2:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     slide2.slideImages.image = UIImage(named: "fashion")
-    slide2.detailLabel.text = "Did you know that Winnie the chubby little cubby was based on a real, young bear in London"
+    slide2.detailLabel.text = "Fashions Of all Time"
+     slide2.descriptionLabel.text = "In this world of fashion You must Follow the Trend"
+    
     
     let slide3:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     slide3.slideImages.image = UIImage(named: "lifestyle")
   
-    slide3.detailLabel.text = "Did you know that Winnie the chubby little cubby was based on a real, young bear in London"
+    slide3.detailLabel.text = "live Your Life Enjoyable"
+     slide3.descriptionLabel.text = "Checkout Lifestyle hack From our App"
+    
     
     let slide4:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     slide4.slideImages.image = UIImage(named: "travel")
 
-    slide4.detailLabel.text = "Did you know that Winnie the chubby little cubby was based on a real, young bear in London"
+    slide4.detailLabel.text = "Travel the Beautiful Place"
+    
+     slide4.descriptionLabel.text = "Travel the world and Post your Favourite Place Here "
     
     
     let slide5:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     slide5.slideImages.image = UIImage(named: "friends")
-    slide5.detailLabel.text = "Did you know that Winnie the chubby little cubby was based on a real, young bear in London"
+    slide5.detailLabel.text = "Make a Friend on Our App"
+     slide5.descriptionLabel.text = "Making a Friend is now easy with our App"
     
     return [slide1, slide2, slide3, slide4, slide5]
 }
