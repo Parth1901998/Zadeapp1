@@ -19,9 +19,20 @@ class ProductHomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        segmentcontrol.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
+        
+        segmentcontrol.setBackgroundImage(UIImage(),for: .normal, barMetrics: .default)
+        
+     
+        segmentcontrol.backgroundColor = .clear
 
         // Do any additional setup after loading the view.
     }
+    
+   
+    
+    @IBOutlet weak var segmentcontrol: UISegmentedControl!
     
     
     @IBAction func switchViews(_ sender: UISegmentedControl) {

@@ -12,6 +12,9 @@
 		B78AD1E9B1517A6BD48C0742 /* Pods_ZadeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 681CD6105CA9167484698F7E /* Pods_ZadeTests.framework */; };
 		DE0C124E22D5A3D900C1CE6B /* FashionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0C124D22D5A3D900C1CE6B /* FashionViewController.swift */; };
 		DE0C125022D5A79B00C1CE6B /* FashionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0C124F22D5A79B00C1CE6B /* FashionTableViewCell.swift */; };
+		DE3E6FA122DEECE100B05832 /* SidebarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3E6FA022DEECE100B05832 /* SidebarModel.swift */; };
+		DE3E6FA322DF11EE00B05832 /* SideProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3E6FA222DF11EE00B05832 /* SideProductsViewController.swift */; };
+		DE3E6FA522DF124700B05832 /* SideProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3E6FA422DF124700B05832 /* SideProductCollectionViewCell.swift */; };
 		DEA4CC5A22D34CD40044A7DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA4CC5922D34CD40044A7DD /* AppDelegate.swift */; };
 		DEA4CC5C22D34CD40044A7DD /* IntroductionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA4CC5B22D34CD40044A7DD /* IntroductionSlide.swift */; };
 		DEA4CC5F22D34CD40044A7DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEA4CC5D22D34CD40044A7DD /* Main.storyboard */; };
@@ -82,6 +85,9 @@
 		DDEA0D76F7A1573929D7F247 /* Pods-Zade.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zade.debug.xcconfig"; path = "Target Support Files/Pods-Zade/Pods-Zade.debug.xcconfig"; sourceTree = "<group>"; };
 		DE0C124D22D5A3D900C1CE6B /* FashionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FashionViewController.swift; sourceTree = "<group>"; };
 		DE0C124F22D5A79B00C1CE6B /* FashionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FashionTableViewCell.swift; sourceTree = "<group>"; };
+		DE3E6FA022DEECE100B05832 /* SidebarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarModel.swift; sourceTree = "<group>"; };
+		DE3E6FA222DF11EE00B05832 /* SideProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideProductsViewController.swift; sourceTree = "<group>"; };
+		DE3E6FA422DF124700B05832 /* SideProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		DEA4CC5622D34CD40044A7DD /* Zade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEA4CC5922D34CD40044A7DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEA4CC5B22D34CD40044A7DD /* IntroductionSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionSlide.swift; sourceTree = "<group>"; };
@@ -248,6 +254,7 @@
 			children = (
 				DEA4CC8722D34D300044A7DD /* Slide.xib */,
 				DEA4CC5D22D34CD40044A7DD /* Main.storyboard */,
+				DE3E6FA422DF124700B05832 /* SideProductCollectionViewCell.swift */,
 				DEAD29E622DC74270036D28B /* UserpostsTableViewCell.swift */,
 				DEAD29E222DC55420036D28B /* BestSellerCollectionViewCell.swift */,
 				DEAD29DC22DC43740036D28B /* CollectionViewCell.swift */,
@@ -279,6 +286,7 @@
 				DEAD29E422DC730A0036D28B /* UserPostViewController.swift */,
 				DEAD29EA22DC795E0036D28B /* UpdateViewController.swift */,
 				DEAD29E022DC54BD0036D28B /* BestSellersViewController.swift */,
+				DE3E6FA222DF11EE00B05832 /* SideProductsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -309,6 +317,7 @@
 				DEAD29DE22DC45090036D28B /* CollectData.swift */,
 				DEAD29E822DC75120036D28B /* UploadTask.swift */,
 				DEAD29EC22DCA75C0036D28B /* UserTotalPostModel.swift */,
+				DE3E6FA022DEECE100B05832 /* SidebarModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -562,6 +571,7 @@
 				DEAD29ED22DCA75C0036D28B /* UserTotalPostModel.swift in Sources */,
 				DEAD29E922DC75120036D28B /* UploadTask.swift in Sources */,
 				DEFB8C4322D6E9BA00CEFD1F /* LifeStyleViewController.swift in Sources */,
+				DE3E6FA322DF11EE00B05832 /* SideProductsViewController.swift in Sources */,
 				DEF8B95422D44FFF00D40722 /* BasicCell.swift in Sources */,
 				DEAD29E122DC54BD0036D28B /* BestSellersViewController.swift in Sources */,
 				DEFB8C5622D7216900CEFD1F /* SideMenuViewController.swift in Sources */,
@@ -569,6 +579,7 @@
 				DEAD29E322DC55420036D28B /* BestSellerCollectionViewCell.swift in Sources */,
 				DEFB8C6522D753D700CEFD1F /* newArrivalViewCell.swift in Sources */,
 				DEAD29EB22DC795E0036D28B /* UpdateViewController.swift in Sources */,
+				DE3E6FA122DEECE100B05832 /* SidebarModel.swift in Sources */,
 				DEAD29DD22DC43740036D28B /* CollectionViewCell.swift in Sources */,
 				DEAD29E722DC74270036D28B /* UserpostsTableViewCell.swift in Sources */,
 				DEA4CC8E22D351960044A7DD /* LoginViewController.swift in Sources */,
@@ -589,6 +600,7 @@
 				DEFB8C6322D750AA00CEFD1F /* NewArrivals.swift in Sources */,
 				DE0C125022D5A79B00C1CE6B /* FashionTableViewCell.swift in Sources */,
 				DEA4CC5A22D34CD40044A7DD /* AppDelegate.swift in Sources */,
+				DE3E6FA522DF124700B05832 /* SideProductCollectionViewCell.swift in Sources */,
 				DEF8B95E22D49F0300D40722 /* ProductHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

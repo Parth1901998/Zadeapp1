@@ -76,6 +76,10 @@ class FashionViewController: UIViewController,UITableViewDelegate,UITableViewDat
         return 500
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        fashionTableview.deselectRow(at: indexPath, animated: true)
+    }
+    
     func readData() {
         self.logoImage.removeAll()
         db.collection("FashionBlogs").getDocuments() { (querySnapshot, err) in

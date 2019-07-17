@@ -34,6 +34,12 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegat
         let UserPostViewController = storyBoard.instantiateViewController(withIdentifier: "tabbar") as! UITabBarController
         self.present(UserPostViewController, animated:true, completion:nil)
         
+//        let userpost = storyboard?.instantiateViewController(withIdentifier: "UserPostViewController") as! UserPostViewController
+//        self.navigationController?.pushViewController(userpost, animated: true)
+        
+        
+        
+        
     }
 
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -72,6 +78,9 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegat
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
               let IntroductionSlide = storyBoard.instantiateViewController(withIdentifier: "Introduction") as! IntroductionSlide
                self.present(IntroductionSlide, animated:true, completion:nil)
+        
+//    let vc = IntroductionSlide()
+//     navigationController?.popViewController(animated: true)
         
         
     }

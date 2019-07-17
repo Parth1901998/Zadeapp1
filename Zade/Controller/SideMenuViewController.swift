@@ -19,6 +19,10 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
         content.customInit(imageName: sections[indexPath.section].collected[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
         self.navigationController?.pushViewController(content, animated: true)
+        
+
+
+        
 //        let Vc = storyboard?.instantiateViewController(withIdentifier: "product") as! NewArrivals
 //        self.navigationController?.pushViewController(Vc, animated: true)
        
@@ -73,6 +77,8 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
                     Section(men: "For women", collected: ["T-Shirt","Shoes","jacket","Asesories"], expanded: false)]
     
 
+
+
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -86,7 +92,7 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
         
         let BestSeller = storyboard?.instantiateViewController(withIdentifier: "product") as! Products_View_Controller
         self.navigationController?.pushViewController(BestSeller, animated: true)
-        
+
     
     }
     
@@ -100,6 +106,11 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
         let ProductHomeViewController = storyBoard.instantiateViewController(withIdentifier: "ProductHomeViewController") as! ProductHomeViewController
         self.present(ProductHomeViewController, animated:true, completion:nil)
     }
+    
+     let db = Firestore.firestore()
+    
+    let uuid = UUID().uuidString
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()

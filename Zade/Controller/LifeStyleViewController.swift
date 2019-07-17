@@ -44,6 +44,10 @@ class LifeStyleViewController: UIViewController,UITableViewDataSource,UITableVie
         return 500
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        lifestyleTableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     
     var logoImage: [UIImage] = [
         UIImage(named: "fashion.png")!,

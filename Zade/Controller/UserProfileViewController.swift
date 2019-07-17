@@ -77,12 +77,14 @@ class UserProfileViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     
     
-    @IBAction func ButtonTapped(_ sender: UIButton) {
+  
+    
+    @IBAction func backToSide(_ sender: UIButton) {
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let SideMenuViewController = storyBoard.instantiateViewController(withIdentifier: "SideMenu") as! SideMenuViewController
-        self.present(SideMenuViewController, animated:true, completion:nil)
+        self.dismiss(animated: true, completion: nil)
+        
     }
+    
     
     func readData() {
        let db = Firestore.firestore()

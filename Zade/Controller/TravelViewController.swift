@@ -33,8 +33,12 @@ class TravelViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 500
+        return 600
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        travelTableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     
     
     @IBOutlet weak var travelTableView: UITableView!
