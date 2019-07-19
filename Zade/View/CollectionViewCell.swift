@@ -17,6 +17,9 @@ class CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var collectionPrice: UILabel!
     
+    
+    @IBOutlet weak var likeCollect: UIButton!
+    
     @IBAction func CollectionLike(_ sender: UIButton) {
         
         

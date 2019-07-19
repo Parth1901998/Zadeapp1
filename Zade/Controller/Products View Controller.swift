@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Firebase
+import  FirebaseAuth
 
 class Products_View_Controller: UIViewController {
     
     
-    @IBOutlet weak var segmentSwitch: UISegmentedControl!
+
     
     
     @IBOutlet weak var newArrivals: UIView!

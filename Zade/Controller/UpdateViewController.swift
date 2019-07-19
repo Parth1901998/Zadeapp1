@@ -30,27 +30,45 @@ class UpdateViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     var postdata : String =  ""
     var uploadImages : String = ""
     var imageName : String = ""
+    var uid :String = ""
+    var likes : UIButton?
+    var userimage = UIImage.self
     //     var postId = ""
+    
+  
     var selectedImage: UIImage?
+    
+//        let userID = Auth.auth().currentUser!.uid
+//    var id = Auth.auth().currentUser?.displayName
+
     
     let imagepicker = UIImagePickerController()
     
     
     override func viewDidLoad() {
+        
+      
         super.viewDidLoad()
      let db = Firestore.firestore()
         addPostData.text = "Enter Text Here"
         addPostData.textColor = UIColor.lightGray
         addPostData.layer.borderWidth = 1
-
-        // Do any additional setup after loading the view.
-    }
+        
+        getCurrentUser()
+}
     
-
+    func getCurrentUser(){
+        let user = Auth.auth().currentUser
+        if let user = user {
+            uid = user.uid
+            
+        }
+    }
+ 
     @IBAction func sharePost(_ sender: UIButton) {
         
         var ref: DocumentReference? = nil
-        ref = db.collection("posts").addDocument(data:["postdata":"\(addPostData.text!)"])
+        ref = db.collection("posts").addDocument(data:["postdata":"\(addPostData.text!)", "uid": uid,"Like":likes])
         { err in
             if let err = err {
                 print("Error adding document: \(err)")
@@ -79,7 +97,7 @@ class UpdateViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         addPostData.text = " "
         
     }
-    
+
 
     @IBAction func UploadImagePressed(_ sender: UIButton) {
         
@@ -115,6 +133,7 @@ class UpdateViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         print(fileUrl.lastPathComponent)
         
         imageName = fileUrl.lastPathComponent
+        
         
         picker.dismiss(animated: true, completion: nil)
     }

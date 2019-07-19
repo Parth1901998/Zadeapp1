@@ -43,11 +43,16 @@ class IntroductionSlide: UIViewController,UIScrollViewDelegate{
     
     @IBAction func skipPressed(_ sender: UIButton) {
         
+
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let LoginViewController = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         self.present(LoginViewController, animated:true, completion:nil)
         
 //        let login = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+//
+//        self.navigationController?.pushViewController(login, animated: true)
+        
+//        let login = storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
 //        self.navigationController?.pushViewController(login, animated: true)
       
     }

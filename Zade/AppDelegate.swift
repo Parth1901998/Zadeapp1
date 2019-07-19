@@ -12,7 +12,9 @@ import GoogleSignIn
 import FirebaseFirestore
 import FirebaseCore
 import FirebaseFirestore
-//import FBSDKCoreKit
+import FBSDKCoreKit
+import FBSDKLoginKit
+import FacebookLogin
 
 
 @UIApplicationMain
@@ -26,13 +28,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         
+       
+
+    
+        
         let handled = GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
         return handled
         
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+      
         // Override point for customization after application launch.
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        // Add any custom logic here.
         FirebaseApp.configure()
         let db = Firestore.firestore()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID

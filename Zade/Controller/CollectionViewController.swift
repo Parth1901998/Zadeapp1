@@ -11,21 +11,9 @@ import Firebase
 import GoogleSignIn
 
 
-class CollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
+class CollectionViewController: UIViewController {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return collectBlog.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-        cell.collectionName.text = collectBlog[indexPath.row].collectName
-        cell.collectionImage.image = collectBlog[indexPath.row].collectImage
-        cell.collectionPrice.text = collectBlog[indexPath.row].collectPrice
-        return cell
-    }
-    
+
     let db = Firestore.firestore()
     var collectBlog : [CollectModel] = []
     
@@ -40,10 +28,20 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
         UIImage(named: "ic_hangbag.png")!,
         UIImage(named: "ic_white.png")!,
         UIImage(named: "ic_black.png")!]
+    var image = #imageLiteral(resourceName: "Like")
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let itemSize = UIScreen.main.bounds.width / 2 - 10
+//        
+//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//        layout.sectionInset = UIEdgeInsets(top: 20, left: 2, bottom: 10, right: 2)
+//        layout.minimumInteritemSpacing = 10
+//        layout.minimumLineSpacing = 10
+//        layout.itemSize = CGSize(width: itemSize, height: itemSize + 50)
+//        collectionView!.collectionViewLayout = layout
         
         self.collectBlog = []
         self.readData()
@@ -69,6 +67,7 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
                     let nownewitem = CollectModel()
                     nownewitem.collectName = (document.data()["ProductName"] as! String)
                     nownewitem.collectPrice = (document.data()["ProductPrice"] as! String)
+                     nownewitem.likeproduct = (document.data()["ProductLike"] as! Bool)
                     // feching data
                     let storeRef = Storage.storage().reference(withPath: "newCollection/\(nownewitem.collectName).jpg")//document.documentID
                     
@@ -90,15 +89,36 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
                         
                     }
                     self.collectionView.reloadData()
-                    //        print("Data Print:- \(document.documentID) => \(document.data())")
-                    //
+                   
                 }
             }
         }
     }
 
+}
+
+extension CollectionViewController : UICollectionViewDelegate,UICollectionViewDataSource
+{
     
-
-  
-
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return collectBlog.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
+        cell.collectionName.text = collectBlog[indexPath.row].collectName
+        cell.collectionImage.image = collectBlog[indexPath.row].collectImage
+        cell.collectionPrice.text = collectBlog[indexPath.row].collectPrice
+        
+        if collectBlog[indexPath.row].likeproduct == true
+        {
+          cell.likeCollect.setImage(image, for: .normal)
+            
+        }
+        
+        return cell
+    }
+    
+    
 }

@@ -10,9 +10,11 @@ import Foundation
 import UIKit
 
 class NewArriveModel {
+    
     var newarrriveImage : UIImage?
     var newarriveName : String = ""
     var newarrivePrice : String = ""
+    var likeproduct : Bool = false
 
 }
 
@@ -21,6 +23,7 @@ class CollectModel {
     var collectImage : UIImage?
     var collectName : String = ""
     var collectPrice :String = ""
+    var likeproduct : Bool = false
 }
 
 class BestSellerModel {

@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
-class UserPostViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class UserPostViewController: UIViewController{
     
     @IBOutlet weak var userPostTableView: UITableView!
     
@@ -30,7 +30,7 @@ class UserPostViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
     var updatestring : String = ""
     var posts : [UploadTask] = []
-    
+    var postdata : [UserTotalPostModel] = []
    
     var db = Firestore.firestore()
     var post:[String] = []
@@ -38,51 +38,31 @@ class UserPostViewController: UIViewController,UITableViewDelegate,UITableViewDa
     //    let db = Firestore.firestore()
     var index = 0
     var postId = ""
-    
-    
+    var uid = ""
+    var likess : Int = 0
+
+
     var userspost = UploadTask()
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserpostsTableViewCell", for: indexPath) as! UserpostsTableViewCell
-        let schedule = postarray[indexPath.row]
-        let inx = posts[indexPath.row]
-        //         cell.txtView.text = inx.post
-        cell.uplodedPostdata.text = schedule
-        cell.uploadedImage.image = inx.image
-        getpost()
-        return cell
-    }
-    
 
-//
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //        let heightOfRow = self.calculateHeight(inString :postarray[indexPath.row])
-        //        return (heightOfRow + 50)
-        return 300
-        
-    }
+    var userpostdata  = UserTotalPostModel()
     
-    
-
+  
     
     override func viewWillAppear(_ animated: Bool) {
         
         self.posts = []
         self.readData()
         userPostTableView.reloadData()
-        
     }
     
-    
+    func getCurrentUser(){
+        let user = Auth.auth().currentUser
+        if let user = user {
+            uid = user.uid
+            print(uid)
+            
+        }
+    }
     
     @IBOutlet weak var lastSeen: UILabel!
     
@@ -117,28 +97,32 @@ class UserPostViewController: UIViewController,UITableViewDelegate,UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
- 
+        getCurrentUser()
         userPostTableView.delegate = self
         userPostTableView.dataSource = self
         
-        let user = Auth.auth().currentUser
-        userName.text = user?.displayName
-        let url = user?.photoURL
+//        let db = Firestore.firestore()
+//        let user = Auth.auth().currentUser
+//        userName.text = user?.displayName
+//        let url = user?.photoURL
+//
+//        let datas = try? Data(contentsOf: url!)
+//
+//        if let imageData = datas {
+//            let image = UIImage(data: imageData)
+//            usersImage.image = image
+//            usersImage.layer.borderWidth = 1
+//            usersImage.layer.masksToBounds = false
+//            usersImage.layer.borderColor = UIColor.black.cgColor
+//            usersImage.layer.cornerRadius = usersImage.frame.height/2
+//            usersImage.clipsToBounds = true
+//
+//
+//        }
         
-        let data = try? Data(contentsOf: url!)
-        
-        if let imageData = data {
-            let image = UIImage(data: imageData)
-            usersImage.image = image
-            usersImage.layer.borderWidth = 1
-            usersImage.layer.masksToBounds = false
-            usersImage.layer.borderColor = UIColor.black.cgColor
-            usersImage.layer.cornerRadius = usersImage.frame.height/2
-            usersImage.clipsToBounds = true
-        let db = Firestore.firestore()
       getpost()
         
-    }
+    
 }
     
     @IBAction func BuyPressed(_ sender: UIButton) {
@@ -150,6 +134,11 @@ class UserPostViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
 
     func readData() {
+        
+
+        
+
+        
         db = Firestore.firestore()
         posts = []
         db.collection("posts").getDocuments() { (querySnapshot, err) in
@@ -160,7 +149,11 @@ class UserPostViewController: UIViewController,UITableViewDelegate,UITableViewDa
                     
                     let new = UploadTask()
                     new.post = "\(document.data()["postdata"] as! String)"
+                    new.useruuid = "\(document.data()["uid"] as! String)"
+                    new.count = "\(document.data()["like"] as! String)"
                     new.imagename = "\(document.documentID)"
+                  
+                
                     let storageRef = Storage.storage().reference(withPath: "Images/\(document.documentID).jpg")
                     storageRef.getData(maxSize: 4*1024*1024) { data, error in
                         if let error = error {
@@ -168,8 +161,8 @@ class UserPostViewController: UIViewController,UITableViewDelegate,UITableViewDa
                         } else {
                             // Data for "images/island.jpg" is returned
                             new.image = UIImage(data: data!)
-                            //                            self.posts.append(new)
-                            //                            self.tableview.reloadData()
+//                            new.photourl = UIImage(data: data!)
+   
                             self.posts.append(new)
                             self.userPostTableView.reloadData()
                         }
@@ -182,4 +175,41 @@ class UserPostViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
     }
 
+}
+
+extension UserPostViewController : UITableViewDelegate,UITableViewDataSource
+{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserpostsTableViewCell", for: indexPath) as! UserpostsTableViewCell
+        let schedule = postarray[indexPath.row]
+        let inx = posts[indexPath.row]
+        //         cell.txtView.text = inx.post
+        cell.uplodedPostdata.text = schedule
+        cell.uploadedImage.image = inx.image
+        //       cell.userImage.image = posts[indexPath.row].photourl
+        //        cell.likeHere = posts[indexPath.row].like
+        
+        getpost()
+        return cell
+    }
+    
+    
+    //
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //        let heightOfRow = self.calculateHeight(inString :postarray[indexPath.row])
+        //        return (heightOfRow + 50)
+        return 370
+        
+    }
+    
 }

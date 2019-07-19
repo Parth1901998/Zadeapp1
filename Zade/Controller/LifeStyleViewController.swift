@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseCore
 
-class LifeStyleViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
+class LifeStyleViewController: UIViewController{
     
     let db = Firestore.firestore()
     
@@ -19,45 +19,14 @@ class LifeStyleViewController: UIViewController,UITableViewDataSource,UITableVie
     
     @IBOutlet weak var lifestyleTableView: UITableView!
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return blogModel.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LifeStyle", for: indexPath) as! LifeStyleTableViewCell
-        
-//        let schedule = postarray[indexPath.row]
-        let lifeModel = blogModel[indexPath.row]
-        
-        cell.lifeStylelogimage.image = blogModel[indexPath.row].blogimage
-        
-          cell.lifestyleHeading.text = blogModel[indexPath.row].blogHeadings
-//          cell.lifestyleTitle.text = blogModel[indexPath.row].blogtitle
-          cell.lifestyleDesc.text = blogModel[indexPath.row].blogDescription
-        return cell
-        
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 500
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        lifestyleTableView.deselectRow(at: indexPath, animated: true)
-    }
-    
     
     var logoImage: [UIImage] = [
         UIImage(named: "fashion.png")!,
         UIImage(named: "friends.png")!,
         UIImage(named: "lifestyle.png")!,
-        UIImage(named: "travel.png")!
-        
-    ]
+        UIImage(named: "travel.png")!]
     
-//    var postarray = [String]()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,12 +53,12 @@ class LifeStyleViewController: UIViewController,UITableViewDataSource,UITableVie
                     // most Important
                     let nownewitem = LifeStyleModel()
                     nownewitem.blogHeadings = (document.data()["Heading"] as! String)
-//                    nownewitem.blogtitle = (document.data()["Title"] as! String)
+
                     nownewitem.blogDescription = (document.data()["Description"] as! String)
                     // feching data
                     let storeRef = Storage.storage().reference(withPath: "lifestyleImages/\(nownewitem.blogHeadings).jpg")//document.documentID
                     
-//                    print("nowlist/\(nownewitem.name!).png")
+
                     
                     storeRef.getData(maxSize: 4 * 1024 *  1024, completion: {(data, error) in
                         if let error = error {
@@ -116,5 +85,43 @@ class LifeStyleViewController: UIViewController,UITableViewDataSource,UITableVie
             }
         }
     
+    }
 }
+
+
+extension LifeStyleViewController : UITableViewDataSource,UITableViewDelegate{
+    
+    
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return blogModel.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LifeStyle", for: indexPath) as! LifeStyleTableViewCell
+        
+        
+        let lifeModel = blogModel[indexPath.row]
+        
+        cell.lifeStylelogimage.image = blogModel[indexPath.row].blogimage
+        
+        cell.lifestyleHeading.text = blogModel[indexPath.row].blogHeadings
+        
+        cell.lifestyleDesc.text = blogModel[indexPath.row].blogDescription
+        return cell
+        
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 500
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        lifestyleTableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+    
 }

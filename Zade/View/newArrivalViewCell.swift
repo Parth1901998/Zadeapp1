@@ -12,7 +12,9 @@ import Firebase
 class newArrivalViewCell: UICollectionViewCell {
     
     
+  
     let db = Firestore.firestore()
+    var arrivalBlog : [NewArriveModel] = []
     
     @IBOutlet weak var newarrivalImage: UIImageView!
     
@@ -30,13 +32,12 @@ class newArrivalViewCell: UICollectionViewCell {
             
             sender.setImage(UIImage(named: "Like"), for: .normal)
             
+            
         }else{
             
             sender.setImage(UIImage(named: "ic_heart"), for: .normal)
         }
         
     }
-    
-
     
 }

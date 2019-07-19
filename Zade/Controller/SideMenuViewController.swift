@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseCore
+import GoogleSignIn
 
 class SideMenuViewController:
 UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewDelegate {
@@ -19,12 +20,7 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
         content.customInit(imageName: sections[indexPath.section].collected[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
         self.navigationController?.pushViewController(content, animated: true)
-        
-
-
-        
-//        let Vc = storyboard?.instantiateViewController(withIdentifier: "product") as! NewArrivals
-//        self.navigationController?.pushViewController(Vc, animated: true)
+    
        
     }
     
@@ -48,6 +44,8 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell")!
+        
+     
         cell.textLabel?.text = sections[indexPath.section].collected[indexPath.row]
         return cell
     }
@@ -99,12 +97,31 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
     @IBOutlet weak var searchBar: UISearchBar!
     
 
+    @IBAction func logOut(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+             GIDSignIn.sharedInstance().signOut()
+//            self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+           self.dismiss(animated: true, completion: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+    }
+    
+    
     
     @IBAction func greenBackButton(_ sender: UIButton) {
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let ProductHomeViewController = storyBoard.instantiateViewController(withIdentifier: "ProductHomeViewController") as! ProductHomeViewController
-        self.present(ProductHomeViewController, animated:true, completion:nil)
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//        let ProductHomeViewController = storyBoard.instantiateViewController(withIdentifier: "ProductHomeViewController") as! ProductHomeViewController
+//        self.present(ProductHomeViewController, animated:true, completion:nil)
+        
+//        let BestSeller = storyboard?.instantiateViewController(withIdentifier: "product") as! Products_View_Controller
+//        self.navigationController?.pushViewController(BestSeller, animated: true)
+        self.dismiss(animated: true, completion: nil)
+
     }
     
      let db = Firestore.firestore()
@@ -123,10 +140,10 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
         let user = Auth.auth().currentUser
         userNameHere.text = user?.displayName
         let url = user?.photoURL
-        
-        
+
+
         let data = try? Data(contentsOf: url!)
-        
+
         if let imageData = data {
             let image = UIImage(data: imageData)
             userImageHere.image = image
@@ -136,8 +153,7 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
             userImageHere.layer.cornerRadius = userImageHere.frame.height/2
             userImageHere.clipsToBounds = true
 
-        // Do any additional setup after loading the view.
-    
+
         }
     
     }

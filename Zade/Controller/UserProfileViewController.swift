@@ -10,19 +10,9 @@ import UIKit
 import  Firebase
 import FirebaseAuth
 
-class UserProfileViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource{
+class UserProfileViewController: UIViewController{
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allImages.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "userprofiles", for: indexPath) as! UserupdatesCollectionViewCell
-        cell.uploadedImage.image = allImages[indexPath.row].allPhotos
-        return cell
-    }
-    
-    
+
     let db = Firestore.firestore()
     var allImages : [UserTotalPostModel] = []
     
@@ -31,8 +21,7 @@ class UserProfileViewController: UIViewController,UICollectionViewDelegate,UICol
         UIImage(named: "ic_hangbag.png")!,
         UIImage(named: "ic_white.png")!,
         UIImage(named: "ic_black.png")!]
-//
-//      var posts : [UserTotalPostModel] = []
+
 
     @IBOutlet weak var userproname: UILabel!
     
@@ -44,8 +33,25 @@ class UserProfileViewController: UIViewController,UICollectionViewDelegate,UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        folow.layer.borderColor = UIColor (red: 153/255.0, green: 206/255.0, blue: 102/255.0, alpha: 0).cgColor
+        folow.layer.cornerRadius = 20
+     
+//        let itemSize = UIScreen.main.bounds.width / 2 - 10
+//
+//        let layout = UICollectionViewFlowLayout()
+//
+//        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+//
+//        layout.itemSize = CGSize(width: itemSize, height: itemSize + 50)
+//
+//        layout.minimumInteritemSpacing = 10
+//        layout.minimumLineSpacing = 0
+//
+//        userUploadedPhotos.collectionViewLayout = layout
+        
         self.allImages = []
         self.readData()
+        
         userUploadedPhotos.reloadData()
         
         userUploadedPhotos.dataSource = self
@@ -76,16 +82,21 @@ class UserProfileViewController: UIViewController,UICollectionViewDelegate,UICol
         userUploadedPhotos.reloadData()
     }
     
+    @IBOutlet weak var folow: UIButton!
     
-  
+    @IBAction func followPressed(_ sender: UIButton) {
+        
     
+        folow.backgroundColor = UIColor.blue
+    }
+    
+ 
     @IBAction func backToSide(_ sender: UIButton) {
         
         self.dismiss(animated: true, completion: nil)
-        
     }
     
-    
+
     func readData() {
        let db = Firestore.firestore()
         allImages = []
@@ -96,16 +107,13 @@ class UserProfileViewController: UIViewController,UICollectionViewDelegate,UICol
                 for document in querySnapshot!.documents {
                     
                     let new = UserTotalPostModel()
-//                  new.userposttext = "\(document.data()["postdata"] as! String)"
                     let storageRef = Storage.storage().reference(withPath: "Images/\(document.documentID).jpg")
                     storageRef.getData(maxSize: 4*1024*1024) { data, error in
                         if let error = error {
                             print("error downloading image:\(error)")
                         } else {
-                            // Data for "images/island.jpg" is returned
+                        
                             new.allPhotos = UIImage(data: data!)
-                            //                            self.posts.append(new)
-                            //                            self.tableview.reloadData()
                             self.allImages.append(new)
                             self.userUploadedPhotos.reloadData()
                         }
@@ -119,4 +127,17 @@ class UserProfileViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     
 
+}
+
+extension UserProfileViewController : UICollectionViewDelegate,UICollectionViewDataSource
+{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return allImages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "userprofiles", for: indexPath) as! UserupdatesCollectionViewCell
+        cell.uploadedImage.image = allImages[indexPath.row].allPhotos
+        return cell
+    }
 }

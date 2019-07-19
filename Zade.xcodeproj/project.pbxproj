@@ -10,6 +10,7 @@
 		27B7EAF01D7AC8DFF86B6E7A /* Pods_ZadeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4CC20D81D54CA56B1BBBA2 /* Pods_ZadeUITests.framework */; };
 		709917AC978D7DE0BA392FAE /* Pods_Zade.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59AB6B0A61F4CF044DD7ED00 /* Pods_Zade.framework */; };
 		B78AD1E9B1517A6BD48C0742 /* Pods_ZadeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 681CD6105CA9167484698F7E /* Pods_ZadeTests.framework */; };
+		DE01ADCF22E0AFF6007AFC6E /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE01ADCE22E0AFF6007AFC6E /* CommentViewController.swift */; };
 		DE0C124E22D5A3D900C1CE6B /* FashionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0C124D22D5A3D900C1CE6B /* FashionViewController.swift */; };
 		DE0C125022D5A79B00C1CE6B /* FashionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0C124F22D5A79B00C1CE6B /* FashionTableViewCell.swift */; };
 		DE3E6FA122DEECE100B05832 /* SidebarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3E6FA022DEECE100B05832 /* SidebarModel.swift */; };
@@ -83,6 +84,7 @@
 		D0BCF164B561CE12DE0F6B4D /* Pods-ZadeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZadeTests.debug.xcconfig"; path = "Target Support Files/Pods-ZadeTests/Pods-ZadeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9E43187028C1AB6314765F5 /* Pods-Zade.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zade.release.xcconfig"; path = "Target Support Files/Pods-Zade/Pods-Zade.release.xcconfig"; sourceTree = "<group>"; };
 		DDEA0D76F7A1573929D7F247 /* Pods-Zade.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zade.debug.xcconfig"; path = "Target Support Files/Pods-Zade/Pods-Zade.debug.xcconfig"; sourceTree = "<group>"; };
+		DE01ADCE22E0AFF6007AFC6E /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		DE0C124D22D5A3D900C1CE6B /* FashionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FashionViewController.swift; sourceTree = "<group>"; };
 		DE0C124F22D5A79B00C1CE6B /* FashionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FashionTableViewCell.swift; sourceTree = "<group>"; };
 		DE3E6FA022DEECE100B05832 /* SidebarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarModel.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			children = (
 				DEA4CC8722D34D300044A7DD /* Slide.xib */,
 				DEA4CC5D22D34CD40044A7DD /* Main.storyboard */,
+				DE01ADCE22E0AFF6007AFC6E /* CommentViewController.swift */,
 				DE3E6FA422DF124700B05832 /* SideProductCollectionViewCell.swift */,
 				DEAD29E622DC74270036D28B /* UserpostsTableViewCell.swift */,
 				DEAD29E222DC55420036D28B /* BestSellerCollectionViewCell.swift */,
@@ -583,6 +586,7 @@
 				DEAD29DD22DC43740036D28B /* CollectionViewCell.swift in Sources */,
 				DEAD29E722DC74270036D28B /* UserpostsTableViewCell.swift in Sources */,
 				DEA4CC8E22D351960044A7DD /* LoginViewController.swift in Sources */,
+				DE01ADCF22E0AFF6007AFC6E /* CommentViewController.swift in Sources */,
 				DEF8B94E22D44C6200D40722 /* MenuTabsView.swift in Sources */,
 				DEFB8C5222D71C0C00CEFD1F /* Section.swift in Sources */,
 				DEFB8C4522D6EB4E00CEFD1F /* LifeStyleTableViewCell.swift in Sources */,

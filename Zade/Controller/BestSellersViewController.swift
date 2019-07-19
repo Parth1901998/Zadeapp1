@@ -10,20 +10,9 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class BestSellersViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate{
+class BestSellersViewController: UIViewController{
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sellerBlog.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BestSeller", for: indexPath) as! BestSellerCollectionViewCell
-        cell.sellerImages.image = sellerBlog[indexPath.row].bestImage
-        cell.sellerName.text = sellerBlog[indexPath.row].bestName
-        return cell
-    }
-    
-    
+
     let db = Firestore.firestore()
     var sellerBlog : [BestSellerModel] = []
     
@@ -41,6 +30,15 @@ class BestSellersViewController: UIViewController,UICollectionViewDataSource,UIC
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//                let itemSize = UIScreen.main.bounds.width / 2 - 10
+//        
+//                let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//                layout.sectionInset = UIEdgeInsets(top: 20, left: 2, bottom: 10, right: 2)
+//                layout.minimumInteritemSpacing = 10
+//                layout.minimumLineSpacing = 10
+//                layout.itemSize = CGSize(width: itemSize, height: itemSize + 50)
+//                BestSellerView!.collectionViewLayout = layout
         
         self.sellerBlog = []
         self.readData()
@@ -79,19 +77,32 @@ class BestSellersViewController: UIViewController,UICollectionViewDataSource,UIC
                             self.BestSellerView.reloadData()
                         }
                     })
-                    //self.nows.append(nownewitem.image!)
+             
                     self.sellerBlog.append(nownewitem)
                     DispatchQueue.main.async {
                         self.BestSellerView.reloadData()
                         
                     }
                     self.BestSellerView.reloadData()
-                    //        print("Data Print:- \(document.documentID) => \(document.data())")
-                    //
+                   
                 }
             }
         }
     }
   
 
+}
+
+extension BestSellersViewController :UICollectionViewDataSource,UICollectionViewDelegate
+{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return sellerBlog.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BestSeller", for: indexPath) as! BestSellerCollectionViewCell
+        cell.sellerImages.image = sellerBlog[indexPath.row].bestImage
+        cell.sellerName.text = sellerBlog[indexPath.row].bestName
+        return cell
+    }
 }

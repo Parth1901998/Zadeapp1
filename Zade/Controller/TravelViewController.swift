@@ -10,35 +10,7 @@ import UIKit
 import Firebase
 
 
-class TravelViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-    
-    
-//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return 1
-//    }
-//
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return travelBlog.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TravelTableViewCell", for: indexPath) as! TravelTableViewCell
-        
-        cell.travelImage.image = travelBlog[indexPath.row].travelimage
-        cell.travelHeading.text = travelBlog[indexPath.row].travelHEading
-//        cell.travelTitle.text = travelBlog[indexPath.row].travelTitle
-        cell.travelDesc.text = travelBlog[indexPath.row].travelDescrip
-    
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 600
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        travelTableView.deselectRow(at: indexPath, animated: true)
-    }
-    
+class TravelViewController: UIViewController{
     
     
     @IBOutlet weak var travelTableView: UITableView!
@@ -74,11 +46,7 @@ class TravelViewController: UIViewController,UITableViewDelegate,UITableViewData
             // most Important
             let nownewitem = TravelModel()
             nownewitem.travelHEading = (document.data()["Heading"] as! String)
-                print(nownewitem.travelHEading)
-//            nownewitem.travelTitle = (document.data()["Title"] as! String)
-//                print(nownewitem.travelTitle)
             nownewitem.travelDescrip = (document.data()["Description"] as! String)
-                print(nownewitem.travelDescrip)
             // feching data
             let storeRef = Storage.storage().reference(withPath: "travelImages/\(nownewitem.travelHEading).jpg")//document.documentID
         
@@ -94,18 +62,47 @@ class TravelViewController: UIViewController,UITableViewDelegate,UITableViewData
             self.travelTableView.reloadData()
             }
     })
-    //self.nows.append(nownewitem.image!)
+  
             self.travelBlog.append(nownewitem)
             DispatchQueue.main.async {
             self.travelTableView.reloadData()
     
             }
                 self.travelTableView.reloadData()
-//        print("Data Print:- \(document.documentID) => \(document.data())")
-//    
-            }
-            }
-        }
-    }
 
+   
+            }
+          }
+        }
+     }
+    
 }
+
+
+extension TravelViewController : UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return travelBlog.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TravelTableViewCell", for: indexPath) as! TravelTableViewCell
+        
+        cell.travelImage.image = travelBlog[indexPath.row].travelimage
+        cell.travelHeading.text = travelBlog[indexPath.row].travelHEading
+        //        cell.travelTitle.text = travelBlog[indexPath.row].travelTitle
+        cell.travelDesc.text = travelBlog[indexPath.row].travelDescrip
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 600
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        travelTableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+    
+}
+

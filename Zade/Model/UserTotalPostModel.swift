@@ -13,4 +13,6 @@ class UserTotalPostModel
 {
     var allPhotos : UIImage?
     var userposttext : String = ""
+    var like : UIButton?
+    var likevalue : String = ""
 }

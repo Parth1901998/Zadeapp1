@@ -20,14 +20,23 @@ class ProductHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swiped:"))
+        rightSwipe.direction = .right
+        self.segmentcontrol.addGestureRecognizer(rightSwipe)
+
         segmentcontrol.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
-        
+
         segmentcontrol.setBackgroundImage(UIImage(),for: .normal, barMetrics: .default)
-        
-     
+
+
         segmentcontrol.backgroundColor = .clear
 
-        // Do any additional setup after loading the view.
+//         Do any additional setup after loading the view.
+    }
+
+    func swiped(sender:UIGestureRecognizer){
+        print("Swiped.....!")
     }
     
    

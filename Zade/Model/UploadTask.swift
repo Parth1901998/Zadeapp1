@@ -14,4 +14,9 @@ class UploadTask
 var post : String = " "
 var imagename : String = ""
 var image : UIImage?
+var useruuid : String = ""
+var photourl : UIImage?
+var like : Bool  = false
+var count : String = ""
+    
 }
