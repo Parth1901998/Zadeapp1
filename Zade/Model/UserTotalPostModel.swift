@@ -15,4 +15,5 @@ class UserTotalPostModel
     var userposttext : String = ""
     var like : UIButton?
     var likevalue : String = ""
+    var lasttiming : String = ""
 }

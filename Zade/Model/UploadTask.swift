@@ -11,12 +11,15 @@ import UIKit
 
 class UploadTask
 {
-var post : String = " "
+var post : String = ""
 var imagename : String = ""
 var image : UIImage?
 var useruuid : String = ""
-var photourl : UIImage?
+var photourl : String = ""
 var like : Bool  = false
 var count : String = ""
+    var lasttiming : String = ""
+var userimage : UIImage?
+var usernames : String = ""
     
 }

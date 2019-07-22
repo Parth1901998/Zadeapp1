@@ -71,7 +71,7 @@ class UserpostsTableViewCell: UITableViewCell {
         
        
         getCurrentUser()
-        
+
         let user = Auth.auth().currentUser
         userName.text = user?.displayName
         let url = user?.photoURL
@@ -86,7 +86,7 @@ class UserpostsTableViewCell: UITableViewCell {
             userImage.layer.borderColor = UIColor.black.cgColor
             userImage.layer.cornerRadius = userImage.frame.height/2
             userImage.clipsToBounds = true
-        
+
         // Initialization code
     }
         

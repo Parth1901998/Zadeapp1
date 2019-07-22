@@ -46,8 +46,6 @@ class UserPostViewController: UIViewController{
 
     var userpostdata  = UserTotalPostModel()
     
-  
-    
     override func viewWillAppear(_ animated: Bool) {
         
         self.posts = []
@@ -67,6 +65,7 @@ class UserPostViewController: UIViewController{
     @IBOutlet weak var lastSeen: UILabel!
     
     
+    
     @IBAction func backToIntroduction(_ sender: UIButton) {
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
@@ -74,7 +73,6 @@ class UserPostViewController: UIViewController{
         self.present(IntroductionSlide, animated:true, completion:nil)
         
     }
-    
     
     func getpost()
     {
@@ -98,8 +96,11 @@ class UserPostViewController: UIViewController{
         super.viewDidLoad()
         
         getCurrentUser()
+    
         userPostTableView.delegate = self
         userPostTableView.dataSource = self
+        
+       
         
 //        let db = Firestore.firestore()
 //        let user = Auth.auth().currentUser
@@ -135,12 +136,11 @@ class UserPostViewController: UIViewController{
 
     func readData() {
         
-
-        
-
         
         db = Firestore.firestore()
         posts = []
+     
+
         db.collection("posts").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -150,10 +150,33 @@ class UserPostViewController: UIViewController{
                     let new = UploadTask()
                     new.post = "\(document.data()["postdata"] as! String)"
                     new.useruuid = "\(document.data()["uid"] as! String)"
-                    new.count = "\(document.data()["like"] as! String)"
+                    new.count = "\(document.data()["like"] as? String)"
                     new.imagename = "\(document.documentID)"
-                  
+//                    let date = document.data()["Date"] as? Timestamp
+//                    let  timeStamp:Timestamp = date?.dateValue()
+//
                 
+                    
+//                    var timming = document.data()["Date"] as? Timestamp
+//
+                    print(document.data()["Date"] as? String)
+                    
+                    new.photourl = "\(document.data()["UserImage"] as! String)"
+                    new.usernames = "\(document.data()["UserNames"] as! String)"
+                    
+//                    print(new.lasttiming)
+                    print(new.photourl)
+                    
+                    let url = URL(string: new.photourl)
+                    
+                    print(url!)
+                    
+                    let data = try? Data(contentsOf: url!)
+                     new.userimage = UIImage(data: data!)
+                    //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                    print(data)
+//                    self.usersImage.image = UIImage(data:data!)
+             
                     let storageRef = Storage.storage().reference(withPath: "Images/\(document.documentID).jpg")
                     storageRef.getData(maxSize: 4*1024*1024) { data, error in
                         if let error = error {
@@ -161,19 +184,21 @@ class UserPostViewController: UIViewController{
                         } else {
                             // Data for "images/island.jpg" is returned
                             new.image = UIImage(data: data!)
-//                            new.photourl = UIImage(data: data!)
+                           
+                           
+//                   new.photourl = UIImage(data: data!)
    
                             self.posts.append(new)
                             self.userPostTableView.reloadData()
                         }
                     }
-                    
-                    
                 }
             }
         }
         
     }
+    
+  
 
 }
 
@@ -196,13 +221,17 @@ extension UserPostViewController : UITableViewDelegate,UITableViewDataSource
         //         cell.txtView.text = inx.post
         cell.uplodedPostdata.text = schedule
         cell.uploadedImage.image = inx.image
+        cell.userImage.image = inx.userimage
+        cell.userName.text = inx.usernames
+        cell.usertime.text = inx.lasttiming
+        
+        
         //       cell.userImage.image = posts[indexPath.row].photourl
         //        cell.likeHere = posts[indexPath.row].like
-        
+  
         getpost()
         return cell
     }
-    
     
     //
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -67,9 +67,27 @@ class UpdateViewController: UIViewController,UIImagePickerControllerDelegate,UIN
  
     @IBAction func sharePost(_ sender: UIButton) {
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.doesRelativeDateFormatting = true
+        
         var ref: DocumentReference? = nil
-        ref = db.collection("posts").addDocument(data:["postdata":"\(addPostData.text!)", "uid": uid,"Like":likes])
-        { err in
+        
+        guard let userimages = Auth.auth().currentUser!.photoURL
+        else
+       {
+            return
+        }
+           print(userimages)
+        guard let usernames = Auth.auth().currentUser!.displayName
+        else
+        {
+            return
+        }
+        print(usernames)
+        
+         print(Auth.auth().currentUser!.photoURL!)
+        ref = db.collection("posts").addDocument(data:["postdata":"\(addPostData.text!)", "uid": uid,"Like": likes as Any,"Date" : FieldValue.serverTimestamp(),"UserImage":"\(userimages)","UserNames": "\(usernames)"]){ err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
@@ -92,8 +110,8 @@ class UpdateViewController: UIViewController,UIImagePickerControllerDelegate,UIN
                 }
             }
         }
+     
         
-      
         addPostData.text = " "
         
     }

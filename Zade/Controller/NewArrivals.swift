@@ -120,6 +120,8 @@ extension NewArrivals : UICollectionViewDataSource,UICollectionViewDelegate{
         cell.newarrivalImage.image=arrivalBlog[indexPath.row].newarrriveImage
         cell.newarrivalPrice.text=arrivalBlog[indexPath.row].newarrivePrice
         
+     
+        
         if arrivalBlog[indexPath.row].likeproduct == true
         {
              cell.newarrivallike.setImage(image, for: .normal)
