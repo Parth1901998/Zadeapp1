@@ -31,18 +31,13 @@ class CollectionViewController: UIViewController {
     var image = #imageLiteral(resourceName: "Like")
     
     
+    
+    //MARK:- ViewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let itemSize = UIScreen.main.bounds.width / 2 - 10
-//        
-//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsets(top: 20, left: 2, bottom: 10, right: 2)
-//        layout.minimumInteritemSpacing = 10
-//        layout.minimumLineSpacing = 10
-//        layout.itemSize = CGSize(width: itemSize, height: itemSize + 50)
-//        collectionView!.collectionViewLayout = layout
-        
+
         self.collectBlog = []
         self.readData()
         
@@ -52,6 +47,8 @@ class CollectionViewController: UIViewController {
       
     }
  
+    
+    //MARK: Fetch From Firebase
     
     func readData()
     {

@@ -54,6 +54,7 @@ class SideProductsViewController: UIViewController,UICollectionViewDelegate,UICo
         // Do any additional setup after loading the view.
     }
     
+    //MARK:- Fetch From Firebase
     
     func readData()
     {
@@ -90,15 +91,10 @@ class SideProductsViewController: UIViewController,UICollectionViewDelegate,UICo
                         
                     }
                     self.sideTableView.reloadData()
-                    //        print("Data Print:- \(document.documentID) => \(document.data())")
-                    //
+                   
                 }
             }
         }
     }
-    
-    
-
-   
 
 }

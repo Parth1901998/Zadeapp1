@@ -32,6 +32,9 @@ class TravelViewController: UIViewController{
         travelTableView.delegate = self
 
     }
+    
+    
+    // MARK: Fetch From Firebase
  
      func readData()
       {

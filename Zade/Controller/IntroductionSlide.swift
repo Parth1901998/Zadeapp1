@@ -40,7 +40,6 @@ class IntroductionSlide: UIViewController,UIScrollViewDelegate{
     }
     
     
-    
     @IBAction func skipPressed(_ sender: UIButton) {
         
 

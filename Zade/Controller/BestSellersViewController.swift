@@ -28,18 +28,13 @@ class BestSellersViewController: UIViewController{
         UIImage(named: "ic_white.png")!,
         UIImage(named: "ic_black.png")!]
 
+    
+    //MARK:- ViewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//                let itemSize = UIScreen.main.bounds.width / 2 - 10
-//        
-//                let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//                layout.sectionInset = UIEdgeInsets(top: 20, left: 2, bottom: 10, right: 2)
-//                layout.minimumInteritemSpacing = 10
-//                layout.minimumLineSpacing = 10
-//                layout.itemSize = CGSize(width: itemSize, height: itemSize + 50)
-//                BestSellerView!.collectionViewLayout = layout
-        
+
         self.sellerBlog = []
         self.readData()
         BestSellerView.reloadData()
@@ -48,6 +43,8 @@ class BestSellersViewController: UIViewController{
 
     }
     
+    
+    //MARK:- Fetch From Firebase
    
     func readData()
     {
@@ -90,7 +87,6 @@ class BestSellersViewController: UIViewController{
         }
     }
   
-
 }
 
 extension BestSellersViewController :UICollectionViewDataSource,UICollectionViewDelegate

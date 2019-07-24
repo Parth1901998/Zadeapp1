@@ -17,6 +17,9 @@ import FacebookCore
 
 class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegate, LoginButtonDelegate{
     
+    // MARK: Fb Login Method
+    
+    
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         if let error = error {
@@ -31,13 +34,13 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegat
                 return
             }
             
-            //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            //let UserPostViewController = storyBoard.instantiateViewController(withIdentifier: "tabbar") as! UITabBarController
-            //self.present(UserPostViewController, animated:true, completion:nil)
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let UserPostViewController = storyBoard.instantiateViewController(withIdentifier: "tabbar") as! UITabBarController
+            self.present(UserPostViewController, animated:true, completion:nil)
             
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "tabbar") as? UITabBarController
-            
-            self.navigationController?.pushViewController(vc!, animated: true)
+//            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "tabbar") as? UITabBarController
+//
+//            self.navigationController?.pushViewController(vc!, animated: true)
             
             }
             
@@ -67,12 +70,11 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegat
     @IBAction func signWithGoogle(_ sender: UIButton) {
         
          GIDSignIn.sharedInstance().signIn()
-
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabbar") as! UITabBarController
+//        self.navigationController?.pushViewController(vc, animated: true)
 
         
     }
-    
-    
     
     @IBAction func fbLogin(_ sender: Any) {
    
@@ -89,10 +91,10 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegat
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     let UserPostViewController = storyBoard.instantiateViewController(withIdentifier: "tabbar") as! UITabBarController
                     self.present(UserPostViewController, animated:true, completion:nil)
-                    
+
 //                    let BestSeller = self.storyboard?.instantiateViewController(withIdentifier: "tabbar") as! UITabBarController
 //                    self.navigationController?.pushViewController(BestSeller, animated: true)
-//
+
                     self.getFBUserData()
                 }
             }
@@ -132,6 +134,9 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegat
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             let UserPostViewController = storyBoard.instantiateViewController(withIdentifier: "tabbar") as! UITabBarController
             self.present(UserPostViewController, animated:true, completion:nil)
+            
+//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabbar") as! UITabBarController
+//            self.navigationController?.pushViewController(vc, animated: true)
             
             
             

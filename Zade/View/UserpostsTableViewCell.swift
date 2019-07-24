@@ -59,7 +59,7 @@ class UserpostsTableViewCell: UITableViewCell {
          labelLike.text = "\(counter)"   // It will be selected and count increased by 1
         
         }
-        sender.isSelected = !sender.isSelected
+//        sender.isSelected = !sender.isSelected
     }
     
     

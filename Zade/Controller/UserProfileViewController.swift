@@ -30,24 +30,33 @@ class UserProfileViewController: UIViewController{
     @IBOutlet weak var userUploadedPhotos: UICollectionView!
     
     
+    @IBOutlet weak var folow: UIButton!
+    
+    @IBAction func followPressed(_ sender: UIButton) {
+ 
+    folow.setTitle("Following", for: .normal)
+ 
+    
+    }
+    
+    
+ 
+    @IBAction func backToSide(_ sender: UIButton) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    // MARK: ViewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        folow.layer.borderColor = UIColor (red: 153/255.0, green: 206/255.0, blue: 102/255.0, alpha: 0).cgColor
-        folow.layer.cornerRadius = 20
-     
-//        let itemSize = UIScreen.main.bounds.width / 2 - 10
-//
-//        let layout = UICollectionViewFlowLayout()
-//
-//        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-//
-//        layout.itemSize = CGSize(width: itemSize, height: itemSize + 50)
-//
-//        layout.minimumInteritemSpacing = 10
-//        layout.minimumLineSpacing = 0
-//
-//        userUploadedPhotos.collectionViewLayout = layout
+        folow.layer.borderColor = UIColor(red: 153/255, green: 206/255, blue: 102/255, alpha:1).cgColor
+        folow.layer.borderWidth = 1
+        folow.layer.cornerRadius = 24
+        folow.clipsToBounds = true
+        
         
         self.allImages = []
         self.readData()
@@ -56,7 +65,7 @@ class UserProfileViewController: UIViewController{
         
         userUploadedPhotos.dataSource = self
         userUploadedPhotos.delegate = self
-
+        
         let user = Auth.auth().currentUser
         userproname.text = user?.displayName
         let url = user?.photoURL
@@ -75,6 +84,9 @@ class UserProfileViewController: UIViewController{
         }
         
     }
+    
+    // MARK: ViewWillAppear
+    
     override func viewWillAppear(_ animated: Bool) {
         
         self.allImages = []
@@ -82,20 +94,8 @@ class UserProfileViewController: UIViewController{
         userUploadedPhotos.reloadData()
     }
     
-    @IBOutlet weak var folow: UIButton!
     
-    @IBAction func followPressed(_ sender: UIButton) {
-        
-    
-        folow.backgroundColor = UIColor.blue
-    }
-    
- 
-    @IBAction func backToSide(_ sender: UIButton) {
-        
-        self.dismiss(animated: true, completion: nil)
-    }
-    
+    // MARK: Fech From Firebase
 
     func readData() {
        let db = Firestore.firestore()
@@ -125,8 +125,6 @@ class UserProfileViewController: UIViewController{
         }
         
     }
-    
-
 }
 
 extension UserProfileViewController : UICollectionViewDelegate,UICollectionViewDataSource

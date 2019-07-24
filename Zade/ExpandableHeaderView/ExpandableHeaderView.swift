@@ -34,6 +34,7 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
         self.textLabel?.text = title
         self.section = section
         self.delegate = delegate
+    
     }
     
     override func layoutSubviews() {

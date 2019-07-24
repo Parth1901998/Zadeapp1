@@ -23,15 +23,15 @@ class UserPostViewController: UIViewController{
     @IBOutlet weak var userSearch: UISearchBar!
     
     
-    
     var postarray = [String]()
     
-    //    var imagepostarray = [String]()
     
-    var updatestring : String = ""
-    var posts : [UploadTask] = []
-    var postdata : [UserTotalPostModel] = []
-   
+     var posts = [UploadTask]()
+    var filterdata = [UploadTask]()
+     var inSearchMode = false
+    
+//    var value = [String]()
+    
     var db = Firestore.firestore()
     var post:[String] = []
     //    var postArray = [String: Any]()
@@ -40,14 +40,20 @@ class UserPostViewController: UIViewController{
     var postId = ""
     var uid = ""
     var likess : Int = 0
+    
+
 
 
     var userspost = UploadTask()
 
     var userpostdata  = UserTotalPostModel()
     
+    
+    
+    //MARK: ViewWillAppear
+    
     override func viewWillAppear(_ animated: Bool) {
-        
+          filterdata = posts
         self.posts = []
         self.readData()
         userPostTableView.reloadData()
@@ -74,57 +80,24 @@ class UserPostViewController: UIViewController{
         
     }
     
-    func getpost()
-    {
-        db.collection("posts").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
-                    self.postarray.append(document.data()["postdata"] as! String)
-                    print(document)
-                    print(self.postarray)
-                }
-            }
-        }
-        
-    }
-    
+    //MARK:- ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        filterdata = posts
         
         getCurrentUser()
-    
+
         userPostTableView.delegate = self
         userPostTableView.dataSource = self
-        
-       
-        
-//        let db = Firestore.firestore()
-//        let user = Auth.auth().currentUser
-//        userName.text = user?.displayName
-//        let url = user?.photoURL
-//
-//        let datas = try? Data(contentsOf: url!)
-//
-//        if let imageData = datas {
-//            let image = UIImage(data: imageData)
-//            usersImage.image = image
-//            usersImage.layer.borderWidth = 1
-//            usersImage.layer.masksToBounds = false
-//            usersImage.layer.borderColor = UIColor.black.cgColor
-//            usersImage.layer.cornerRadius = usersImage.frame.height/2
-//            usersImage.clipsToBounds = true
-//
-//
-//        }
-        
-      getpost()
-        
+     userPostTableView.reloadData()
+
+
     
 }
+    
+    
+    //MARK: blog Page
     
     @IBAction func BuyPressed(_ sender: UIButton) {
         
@@ -133,9 +106,10 @@ class UserPostViewController: UIViewController{
                 self.present(ProductHomeViewController, animated:true, completion:nil)
     }
     
+    
+    //MARK: Fetch From Firebase
 
     func readData() {
-        
         
         db = Firestore.firestore()
         posts = []
@@ -152,19 +126,29 @@ class UserPostViewController: UIViewController{
                     new.useruuid = "\(document.data()["uid"] as! String)"
                     new.count = "\(document.data()["like"] as? String)"
                     new.imagename = "\(document.documentID)"
-//                    let date = document.data()["Date"] as? Timestamp
-//                    let  timeStamp:Timestamp = date?.dateValue()
-//
-                
                     
-//                    var timming = document.data()["Date"] as? Timestamp
-//
-                    print(document.data()["Date"] as? String)
+            
+                    let time = Date()
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateStyle = .medium
+                    dateFormatter.doesRelativeDateFormatting = true
+                   dateFormatter.string(from: time)
+                    
+                    dateFormatter.dateFormat = "MMM d, h:mm a"
+//                    dateFormatter.dateFormat = "dd. MMMM YYYY\nH:mm:ss"
+                
+//                    let timeFormatter = ()
+//                    dateFormatter.dateStyle = .medium
+//                    dateFormatter.doesRelativeDateFormatting = true
+                    
+                    new.lasttiming = dateFormatter.string(from: ((document.data()["Date"] as? Timestamp)?.dateValue())!) + "," + dateFormatter.string(from: ((document.data()["Date"] as? Timestamp)?.dateValue())!)
+                    
+                    print(new.lasttiming)
+
                     
                     new.photourl = "\(document.data()["UserImage"] as! String)"
                     new.usernames = "\(document.data()["UserNames"] as! String)"
                     
-//                    print(new.lasttiming)
                     print(new.photourl)
                     
                     let url = URL(string: new.photourl)
@@ -186,8 +170,6 @@ class UserPostViewController: UIViewController{
                             new.image = UIImage(data: data!)
                            
                            
-//                   new.photourl = UIImage(data: data!)
-   
                             self.posts.append(new)
                             self.userPostTableView.reloadData()
                         }
@@ -198,11 +180,9 @@ class UserPostViewController: UIViewController{
         
     }
     
-  
-
 }
 
-extension UserPostViewController : UITableViewDelegate,UITableViewDataSource
+extension UserPostViewController : UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate
 {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -210,35 +190,74 @@ extension UserPostViewController : UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        
+        if inSearchMode {
+            
+            return filterdata.count
+        }
+        
+            return posts.count
+       
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserpostsTableViewCell", for: indexPath) as! UserpostsTableViewCell
-        let schedule = postarray[indexPath.row]
-        let inx = posts[indexPath.row]
+//        let schedule = postarray[indexPath.row]
+    
+        
+//        let text : String!
+        
+        if inSearchMode
+        {
+            let inx = filterdata[indexPath.row]
+            //         cell.txtView.text = inx.post
+            cell.uplodedPostdata.text = inx.post
+            cell.uploadedImage.image = inx.image
+            cell.userImage.image = inx.userimage
+            cell.userName.text = inx.usernames
+            cell.usertime.text = inx.lasttiming
+        }
+        else
+        {
+        
+   let inx = posts[indexPath.row]
         //         cell.txtView.text = inx.post
-        cell.uplodedPostdata.text = schedule
+        cell.uplodedPostdata.text = inx.post
         cell.uploadedImage.image = inx.image
         cell.userImage.image = inx.userimage
         cell.userName.text = inx.usernames
         cell.usertime.text = inx.lasttiming
-        
-        
-        //       cell.userImage.image = posts[indexPath.row].photourl
-        //        cell.likeHere = posts[indexPath.row].like
-  
-        getpost()
+            
+        }
+//    getpost()
         return cell
+        
+    
     }
+   
     
     //
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //        let heightOfRow = self.calculateHeight(inString :postarray[indexPath.row])
-        //        return (heightOfRow + 50)
+   
         return 370
         
     }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {
+            inSearchMode = false
+            filterdata = posts
+       userPostTableView.reloadData()
+            return
+        }
+        filterdata = posts.filter({ (UploadTask) -> Bool in
+            inSearchMode = true
+           return UploadTask.usernames.lowercased().contains(searchText.lowercased())
+        })
+        userPostTableView.reloadData()
+    }
+  
     
 }
+
+

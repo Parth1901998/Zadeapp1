@@ -10,12 +10,14 @@ import UIKit
 import Firebase
 
 class NewArrivals: UIViewController{
-    
-      let db = Firestore.firestore()
-    var arrivalBlog : [NewArriveModel] = []
-    
  
     
+      let db = Firestore.firestore()
+    var arrivalBlog = [NewArriveModel]()
+    var filtered = [NewArriveModel]()
+  
+    
+ 
     @IBOutlet weak var newArrivalCollection: UICollectionView!
     
     var array = ["Ultra Boosts Shoes", "Star Bags #1", "White Frok", "Black Frok"]
@@ -28,38 +30,26 @@ class NewArrivals: UIViewController{
         UIImage(named: "ic_black.png")!]
     
     
+   //MARK: ViewDidload
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.readData()
-//
-//        let itemSize = UIScreen.main.bounds.width / 2 - 10
-//
-//        let layout = UICollectionViewFlowLayout()
-//
-//        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-//
-//        layout.itemSize = CGSize(width: itemSize, height: itemSize + 50)
-//
-//        layout.minimumInteritemSpacing = 2
-//        layout.minimumLineSpacing = 10
-//
-//        newArrivalCollection.collectionViewLayout = layout
+
         
-         let itemSize = UIScreen.main.bounds.width / 2 - 10
-       
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 2, bottom: 10, right: 2)
-        layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 10
-          layout.itemSize = CGSize(width: itemSize, height: itemSize + 50)
-        newArrivalCollection!.collectionViewLayout = layout
+
+        
+        filtered = arrivalBlog
         
         self.arrivalBlog = []
         newArrivalCollection.dataSource = self
         newArrivalCollection.delegate = self
-        
+    
+       
     }
-  
+    
+    //MARK: - Fetch From Firebase
     
     func readData()
     {
@@ -94,7 +84,7 @@ class NewArrivals: UIViewController{
                         }
                     })
                     //self.nows.append(nownewitem.image!)
-                    self.arrivalBlog.append(nownewitem)
+                    self.filtered.append(nownewitem)
                     DispatchQueue.main.async {
                         self.newArrivalCollection.reloadData()
                         
@@ -108,27 +98,41 @@ class NewArrivals: UIViewController{
 }
 
 
-extension NewArrivals : UICollectionViewDataSource,UICollectionViewDelegate{
+extension NewArrivals : UICollectionViewDataSource,UICollectionViewDelegate,UISearchBarDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrivalBlog.count
+     
+        return filtered.count
+            
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newArrivalViewCell", for: indexPath) as! newArrivalViewCell
-        cell.newarrivalName.text = arrivalBlog[indexPath.row].newarriveName
-        cell.newarrivalImage.image=arrivalBlog[indexPath.row].newarrriveImage
-        cell.newarrivalPrice.text=arrivalBlog[indexPath.row].newarrivePrice
+        cell.newarrivalName.text = filtered[indexPath.row].newarriveName
+        cell.newarrivalImage.image=filtered[indexPath.row].newarrriveImage
+        cell.newarrivalPrice.text=filtered[indexPath.row].newarrivePrice
         
      
         
-        if arrivalBlog[indexPath.row].likeproduct == true
+        if filtered[indexPath.row].likeproduct == true
         {
              cell.newarrivallike.setImage(image, for: .normal)
 
         }
         return cell
     }
+    
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty  else { filtered = arrivalBlog; return }
+        
+        filtered = arrivalBlog.filter({ arrivalBlog -> Bool in
+            return arrivalBlog.newarriveName.lowercased().contains(searchText.lowercased())
+        })
+        newArrivalCollection.reloadData()
+        
+    }
+
     
     
 }

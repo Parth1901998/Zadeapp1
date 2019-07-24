@@ -30,6 +30,9 @@ class FashionViewController: UIViewController{
     
     
     var fashionBlog : [FashionModel] = []
+    
+    
+    // MARK:ViewDidload
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +45,8 @@ class FashionViewController: UIViewController{
 
     }
     
+    
+    // MARK: Fetch From Firebase
 
     func readData() {
         self.logoImage.removeAll()

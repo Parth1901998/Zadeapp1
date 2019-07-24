@@ -51,13 +51,18 @@
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lines" translatesAutoresizingMaskIntoConstraints="NO" id="p7T-u1-IS0">
-                    <rect key="frame" x="40" y="594" width="335" height="1"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lines" translatesAutoresizingMaskIntoConstraints="NO" id="p7T-u1-IS0">
+                    <rect key="frame" x="40" y="650" width="335" height="1"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="335" id="io5-q9-JCx"/>
+                        <constraint firstAttribute="height" constant="1" id="oi4-58-EAa"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="p7T-u1-IS0" secondAttribute="bottom" constant="16" id="Brs-WE-DCg"/>
+                <constraint firstAttribute="trailing" secondItem="p7T-u1-IS0" secondAttribute="trailing" id="FiA-QP-1oT"/>
                 <constraint firstItem="3qO-qJ-E7N" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="44" id="L79-et-vUf"/>
                 <constraint firstItem="68C-fJ-ykn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="Q7f-Kx-xKJ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="68C-fJ-ykn" secondAttribute="trailing" constant="40" id="Qtb-72-FoY"/>

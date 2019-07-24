@@ -18,8 +18,10 @@ var useruuid : String = ""
 var photourl : String = ""
 var like : Bool  = false
 var count : String = ""
-    var lasttiming : String = ""
+var lasttiming  = ""
 var userimage : UIImage?
 var usernames : String = ""
+    
+    
     
 }

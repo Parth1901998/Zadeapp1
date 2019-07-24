@@ -15,6 +15,9 @@ class SideMenuViewController:
 UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewDelegate {
     
     
+    // MARK: tableView Methods
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let content = contentViewController()
         content.customInit(imageName: sections[indexPath.section].collected[indexPath.row])
@@ -50,11 +53,11 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
         return cell
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
+        return 50
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (sections[indexPath.section].expanded){
-            return 44
+            return 50
         }
         else
         {
@@ -70,11 +73,20 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
         header.customInit(title: sections[section].men, section: section, delegate: self)
         return header
     }
+   func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.backgroundView?.backgroundColor = .white
+        header.textLabel?.textColor = .black
+        header.textLabel?.textAlignment = .left
+        header.textLabel?.font = UIFont(name: "Helvetica-Bold", size: 14)
+    }
     
-    var sections = [Section(men: "For Men", collected: ["T-Shirt","Shoes","jacket","Asesories"], expanded: false),
-                    Section(men: "For women", collected: ["T-Shirt","Shoes","jacket","Asesories"], expanded: false)]
+  
     
-
+    var sections = [Section(men: "FOR MEN", collected: ["T-Shirt(13)","Shoes(25)","Jacket(48)","Asesories(96)"], expanded: false),
+                    Section(men: "FOR WOMEN", collected: ["T-Shirt(13)","Shoes(25)","Jacket(48)","Asesories(96)"], expanded: false)]
+    
+  
 
 
     @IBOutlet weak var tableView: UITableView!
@@ -88,10 +100,13 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
     
     @IBAction func bestSellerCollection(_ sender: UIButton) {
         
-        let BestSeller = storyboard?.instantiateViewController(withIdentifier: "product") as! Products_View_Controller
-        self.navigationController?.pushViewController(BestSeller, animated: true)
+//        let BestSeller = storyboard?.instantiateViewController(withIdentifier: "product") as! Products_View_Controller
+//        self.navigationController?.pushViewController(BestSeller, animated: true)
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let UserPostViewController = storyBoard.instantiateViewController(withIdentifier: "product") as! Products_View_Controller
+        self.present(UserPostViewController, animated:true, completion:nil)
 
-    
     }
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -102,15 +117,15 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
         do {
             try firebaseAuth.signOut()
              GIDSignIn.sharedInstance().signOut()
-//            self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+//          self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+//
            self.dismiss(animated: true, completion: nil)
+            
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
         
     }
-    
-    
     
     @IBAction func greenBackButton(_ sender: UIButton) {
         
@@ -132,10 +147,14 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.separatorColor = UIColor.clear
+    
+        
    UINavigationBar.appearance().tintColor = .white
         self.searchBar.layer.cornerRadius = 20 
         self.searchBar.clipsToBounds = true
         searchBar.layer.borderWidth = 1
+        searchBar.layer.borderColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1).cgColor
 
         let user = Auth.auth().currentUser
         userNameHere.text = user?.displayName
@@ -147,9 +166,9 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,ExpandableHeaderViewD
         if let imageData = data {
             let image = UIImage(data: imageData)
             userImageHere.image = image
-            userImageHere.layer.borderWidth = 1
+//            userImageHere.layer.borderWidth = 1
             userImageHere.layer.masksToBounds = false
-            userImageHere.layer.borderColor = UIColor.black.cgColor
+//            userImageHere.layer.borderColor = UIColor.black.cgColor
             userImageHere.layer.cornerRadius = userImageHere.frame.height/2
             userImageHere.clipsToBounds = true
 

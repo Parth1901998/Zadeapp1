@@ -26,7 +26,7 @@ class LifeStyleViewController: UIViewController{
         UIImage(named: "lifestyle.png")!,
         UIImage(named: "travel.png")!]
     
-
+    // MARK: ViewDidLoad
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class LifeStyleViewController: UIViewController{
 
     }
 
-    
+    // MARK: Fetch From Firebase
    
     func readData() {
     
@@ -121,7 +121,5 @@ extension LifeStyleViewController : UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         lifestyleTableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    
-    
+
 }

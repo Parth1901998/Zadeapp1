@@ -33,13 +33,10 @@ class UpdateViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     var uid :String = ""
     var likes : UIButton?
     var userimage = UIImage.self
-    //     var postId = ""
-    
+  
   
     var selectedImage: UIImage?
     
-//        let userID = Auth.auth().currentUser!.uid
-//    var id = Auth.auth().currentUser?.displayName
 
     
     let imagepicker = UIImagePickerController()
@@ -65,6 +62,10 @@ class UpdateViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         }
     }
  
+    
+    
+    //MARK:- Upload to Firebase
+    
     @IBAction func sharePost(_ sender: UIButton) {
         
         let dateFormatter = DateFormatter()
@@ -116,6 +117,8 @@ class UpdateViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         
     }
 
+    
+    //MARK:- Selecting Image from library
 
     @IBAction func UploadImagePressed(_ sender: UIButton) {
         

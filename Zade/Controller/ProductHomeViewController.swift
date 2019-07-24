@@ -17,13 +17,18 @@ class ProductHomeViewController: UIViewController {
     
     @IBOutlet weak var travelview: UIView!
     
+    
+   // MARK: ViewDidload
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
 
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swiped:"))
-        rightSwipe.direction = .right
-        self.segmentcontrol.addGestureRecognizer(rightSwipe)
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.swipedRight))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.swipedLeft))
+        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
 
         segmentcontrol.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
 
@@ -35,13 +40,18 @@ class ProductHomeViewController: UIViewController {
 //         Do any additional setup after loading the view.
     }
 
-    func swiped(sender:UIGestureRecognizer){
-        print("Swiped.....!")
+    @objc func swipedRight(){
+        segmentcontrol.selectedSegmentIndex -= 1
     }
     
-   
+    @objc func swipedLeft(){
+        segmentcontrol.selectedSegmentIndex += 1
+    }
     
     @IBOutlet weak var segmentcontrol: UISegmentedControl!
+    
+    
+    // MARK: SegmentControl
     
     
     @IBAction func switchViews(_ sender: UISegmentedControl) {
